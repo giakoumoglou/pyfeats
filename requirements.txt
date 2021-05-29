@@ -1,0 +1,7 @@
+numpy==1.19.2
+scikit-image==0.17.2
+matplotlib==3.3.4
+scipy==1.5.2
+cv2==3.3.1
+pywt==1.1.1
+mahotas==1.4.11
