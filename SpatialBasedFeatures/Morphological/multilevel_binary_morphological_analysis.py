@@ -21,7 +21,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from skimage import morphology
 
-def get_binary_images(img, mask): 
+def _get_binary_images(img, mask): 
     L = np.zeros(img.shape,np.uint8)
     M = np.zeros(img.shape,np.uint8)
     H = np.zeros(img.shape,np.uint8)   
@@ -36,7 +36,7 @@ def get_binary_images(img, mask):
                     M[i,j] = 255
     return L, M, H
 
-def opening_SP(X,B,n): # (X o nB), n=0,1,2...
+def _opening_SP(X,B,n): # (X o nB), n=0,1,2...
     out = X.copy()
     for i in range(n):
         out = morphology.binary_erosion(out, B)
@@ -44,14 +44,14 @@ def opening_SP(X,B,n): # (X o nB), n=0,1,2...
         out = morphology.binary_dilation(out,B)
     return out.astype(np.uint8)
 
-def pattern_spectrum(X,B,n): # PS(X,B,n) = A[X o nB - X o (n+1)B] 
-    ps = opening_SP(X,B,n) - opening_SP(X,B,n+1)
+def _pattern_spectrum(X,B,n): # PS(X,B,n) = A[X o nB - X o (n+1)B] 
+    ps = _opening_SP(X,B,n) - _opening_SP(X,B,n+1)
     return np.count_nonzero(ps)
 
-def multilevel_binary_morphological_analysis(X, B, N):        
+def _multilevel_binary_morphological_analysis(X, B, N):        
     ps = np.zeros(N,np.double)
     for n in range(N):
-        ps[n] = pattern_spectrum(X,B,n)
+        ps[n] = _pattern_spectrum(X,B,n)
     pdf = ps / np.count_nonzero(X)
     cdf = np.cumsum(pdf)
     return pdf, cdf
@@ -59,12 +59,12 @@ def multilevel_binary_morphological_analysis(X, B, N):
 def multilevel_binary_morphology_features(img, mask, N):
     img = img.astype(np.uint8) # grayscale image
     mask = mask.astype(np.uint8)
-    L, M, H = get_binary_images(img, mask)
+    L, M, H = _get_binary_images(img, mask)
     kernel = np.ones((3,3), np.uint8) # kernel/structuring element
     kernel[0,0], kernel[2,2], kernel[0,2], kernel[2,0] = 0, 0, 0, 0 # cross '+'
     pdfs, cdfs = np.zeros((N,3),np.double), np.zeros((N,3),np.double)
     for i, a in enumerate([L, M, H]):
-        pdfs[:,i], cdfs[:,i] = multilevel_binary_morphological_analysis(a,kernel,N)    
+        pdfs[:,i], cdfs[:,i] = _multilevel_binary_morphological_analysis(a,kernel,N)    
     pdf_L, pdf_M, pdf_H = np.array_split(pdfs, 3, axis=1)
     cdf_L, cdf_M, cdf_H = np.array_split(cdfs, 3, axis=1)
     return pdf_L.flatten(), pdf_M.flatten(), pdf_H.flatten(), cdf_L.flatten(), cdf_M.flatten(), cdf_H.flatten()

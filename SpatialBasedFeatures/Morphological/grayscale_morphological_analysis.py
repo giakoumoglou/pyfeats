@@ -21,7 +21,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from skimage import morphology
 
-def opening_FP(f, g, n): # (f o ng), n=0,1,2... 
+def _opening_FP(f, g, n): # (f o ng), n=0,1,2... 
     out = f.copy()
     for i in range(n):
         out = morphology.erosion(out, g)
@@ -29,8 +29,8 @@ def opening_FP(f, g, n): # (f o ng), n=0,1,2...
         out = morphology.dilation(out,g)
     return out 
 
-def pattern_spectrum(f, g, n): # PS(f,g,n) = A[f o ng - f o (n+1)g] 
-    ps = opening_FP(f,g,n) - opening_FP(f,g,(n+1))
+def _pattern_spectrum(f, g, n): # PS(f,g,n) = A[f o ng - f o (n+1)g] 
+    ps = _opening_FP(f,g,n) - _opening_FP(f,g,(n+1))
     return ps.sum() 
 
 def grayscale_morphology_features(f,N):
@@ -39,7 +39,7 @@ def grayscale_morphology_features(f,N):
     kernel[0,0], kernel[2,2], kernel[0,2], kernel[2,0] = 0, 0, 0, 0 
     ps = np.zeros(N, np.double)           # pattern spectrum
     for n in range(N):
-        ps[n] = pattern_spectrum(f,kernel,n)
+        ps[n] = _pattern_spectrum(f,kernel,n)
     pdf = ps / f.sum() 
     cdf = np.cumsum(pdf)  
     return pdf, cdf

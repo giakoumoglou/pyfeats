@@ -29,7 +29,7 @@ from skimage.transform import radon
 import matplotlib.pyplot as plt
 import warnings
 from ..utilities import _entropy
-from .bispectrum import bispectrum  
+from .bispectrum import _bispectrum  
 
 def hos_features(f, th=[135,140]):
     
@@ -43,7 +43,7 @@ def hos_features(f, th=[135,140]):
     entropy = []
     labels = ['HOS_'+str(t)+'_degrees' for t in th]
     for i in range(th.shape[0]):
-        B, _ = bispectrum(radon_transform[:,i])
+        B, _ = _bispectrum(radon_transform[:,i])
         p = abs(B) / (sum(sum(abs(B))))
         e = _entropy(p)
         entropy.append(e)

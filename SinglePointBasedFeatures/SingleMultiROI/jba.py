@@ -23,7 +23,7 @@ import numpy as np
 from skimage import color, img_as_ubyte
 from scipy.spatial.distance import cdist
 
-def get_perc_ROI(mask, perimeter_lumen, perc):
+def _get_perc_ROI(mask, perimeter_lumen, perc):
     dist = np.empty(mask.shape)
     dist[:] = np.inf
     II = np.argwhere(mask)
@@ -43,7 +43,7 @@ def get_perc_ROI(mask, perimeter_lumen, perc):
 
 def jba_feature(img, mask, perimeter_lumen, perc, area_mm=1):
     img = img_as_ubyte(color.rgb2gray(img))
-    area_lumen = get_perc_ROI(mask, perimeter_lumen, perc)  
+    area_lumen = _get_perc_ROI(mask, perimeter_lumen, perc)  
     img_ravel = img.ravel()
     area_lumen_ravel = area_lumen.ravel()
     jba = img_ravel[area_lumen_ravel.astype(bool)] # keep only the values of image inside  the mask

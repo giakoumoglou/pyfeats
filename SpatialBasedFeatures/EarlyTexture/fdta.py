@@ -17,11 +17,11 @@ Outputs:
 import numpy as np
 
 # Estimation of the curve slope using least squares regression, in log-log scale
-def least(id, r):
+def _least(id, r):
     return np.polyfit(np.log10(np.arange(1,r+1)), np.log10(id), deg=1)[0]
 
 # Intensity difference vector with step 
-def intensity(x, s):
+def _intensity(x, s):
     n1, n2, cn1, cn2 = 0, 0, 0, 0
     r, c = x.shape
     y = np.zeros((s), np.double)
@@ -43,7 +43,7 @@ def intensity(x, s):
     return y
 
 # Multiple resolution feature exctraction
-def resolution(x, mr, mc):
+def _resolution(x, mr, mc):
     r, c = x.shape   
     nr = (2 ** mr) - 1
     nc = (2 ** mc) - 1  
@@ -66,15 +66,15 @@ def fdta(f, s=3):
     h[s] = 0
     ms = 3
     i = 0
-    y = intensity(x,ms)
-    h[i] = least(y,ms)
+    y = _intensity(x,ms)
+    h[i] = _least(y,ms)
     mr = np.log2(r)
     mc = np.log2(c)
     while (i < s):
         i = i + 1
         mr = mr - 1
         mc = mc - 1
-        x = resolution(x,mr,mc)
-        y = intensity(x,ms)
-        h[i] = least(y,ms)
+        x = _resolution(x,mr,mc)
+        y = _intensity(x,ms)
+        h[i] = _least(y,ms)
     return h, labels 

@@ -26,7 +26,7 @@ from  scipy import signal
 from ..utilities import gaborKernel2D,gaussianFunction
 import warnings
  
-def filterbank():
+def _filterbank():
     lamda0 = 2
     orientations = 8
     scales = 5
@@ -52,7 +52,7 @@ def filterbank():
     filters.append(result)
     return filters
 
-def calculate_amfm(f):
+def _calculate_amfm(f):
     N1, N2 = f.shape
     # IA = instantaneous amplitude (a_n)
     # IP = instanteneous phase (φ_n)
@@ -70,7 +70,7 @@ def calculate_amfm(f):
                 (IANorm[i,j+1]+IANorm[i,j-1]) / (2*IANorm[i,j]) )))
     return IA, IP, IFx, IFy
 
-def dca(band):
+def _dca(band):
     IA = np.zeros(band[0][0].shape)
     IP = np.zeros(band[0][1].shape)
     IFx = np.zeros(band[0][2].shape)
@@ -95,12 +95,12 @@ def dca(band):
 def amfm_features(f):
     warnings.simplefilter(action='ignore', category=RuntimeWarning)
     AMFM = []
-    filters = filterbank()
+    filters = _filterbank()
     hImg = signal.hilbert(f)
     for i, filtre in enumerate(filters):
         filterImg = signal.convolve2d(hImg, np.rot90(filtre), mode='same', 
                                       boundary='fill', fillvalue=0)
-        IA, IP, IFx, IFy = calculate_amfm(filterImg)
+        IA, IP, IFx, IFy = _calculate_amfm(filterImg)
         IA = np.nan_to_num(IA)
         IP = np.nan_to_num(IP)
         IFx = np.nan_to_num(IFx)
@@ -123,22 +123,22 @@ def amfm_features(f):
         else:
             dc.append(AMFM[i])
     
-    IAl, IPl, IFxl, IFyl = dca(low)
+    IAl, IPl, IFxl, IFyl = _dca(low)
     IAl = (IAl > np.percentile(IAl,50)).astype(np.float64) * IAl
     reconstructionImgDCAl = np.real(IAl * np.cos(IPl))
     H1 = np.histogram(reconstructionImgDCAl, bins=32, density=True)[0]
     
-    IAm, IPm, IFxm, IFym = dca(med)
+    IAm, IPm, IFxm, IFym = _dca(med)
     IAm = (IAm > np.percentile(IAl,50)).astype(np.float64) * IAm
     reconstructionImgDCAm = np.real(IAm * np.cos(IPm))
     H2 = np.histogram(reconstructionImgDCAm, bins=32, density=True)[0]
     
-    IAh, IPh, IFxh, IFyh = dca(high)
+    IAh, IPh, IFxh, IFyh = _dca(high)
     IAh = (IAh > np.percentile(IAl,50)).astype(np.float64) * IAh
     reconstructionImgDCAh = np.real(IAh * np.cos(IPh))
     H3 = np.histogram(reconstructionImgDCAh, bins=32, density=True)[0]
     
-    IAdc, IPdc, IFxdc, IFydc = dca(dc)
+    IAdc, IPdc, IFxdc, IFydc = _dca(dc)
     reconstructionImgDCAdc = np.real(IAdc * np.cos(IPdc))
     H4 = np.histogram(reconstructionImgDCAdc, bins=32, density=True)[0]
     

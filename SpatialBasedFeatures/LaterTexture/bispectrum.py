@@ -8,20 +8,20 @@ from scipy.linalg import hankel
 from scipy.signal import convolve2d
 import matplotlib.pyplot as plt
 
-def nextpow2(num):
+def _nextpow2(num):
   npow = 2
   while npow <= num:
       npow = npow * 2
   return npow
 
 
-def flat_eq(x, y):
+def _flat_eq(x, y):
   z = x.reshape(1, -1)
   z = y
   return z.reshape(x.shape)
 
 
-def make_arr(arrs, axis=0):
+def _make_arr(arrs, axis=0):
   a = []
   ctr = 0
   for x in arrs:
@@ -43,7 +43,7 @@ def shape(o, n):
   else:
     return s
 
-def bispectrum(y, nlag=None, nsamp=None, overlap=None,
+def _bispectrum(y, nlag=None, nsamp=None, overlap=None,
   flag='biased', nfft=None, wind=None):
   """
   Parameters:
@@ -78,17 +78,17 @@ def bispectrum(y, nlag=None, nsamp=None, overlap=None,
 
   nlag = nsamp-1
   if nfft < 2*nlag+1:
-    nfft = 2^nextpow2(nsamp)
+    nfft = 2^_nextpow2(nsamp)
 
 
   # create the lag window
   Bspec = np.zeros([nfft, nfft])
   if wind == 0:
     indx = np.array([range(1,nlag+1)]).T
-    window = make_arr((1, np.sin(np.pi*indx/nlag) / (np.pi*indx/nlag)), axis=0)
+    window = _make_arr((1, np.sin(np.pi*indx/nlag) / (np.pi*indx/nlag)), axis=0)
   else:
     window = np.ones([nlag+1,1])
-  window = make_arr((window, np.zeros([nlag,1])), axis=0)
+  window = _make_arr((window, np.zeros([nlag,1])), axis=0)
 
   # cumulants in non-redundant region
   overlap  = np.fix(nsamp * overlap / 100)
@@ -131,9 +131,9 @@ def bispectrum(y, nlag=None, nsamp=None, overlap=None,
 
   c33  = c33 + np.diag(c3[0, nlag:0:-1])
 
-  cmat = make_arr(
-    (make_arr((c33, c32, np.zeros([nlag,1])), axis=1),
-    make_arr((make_arr((c34, np.zeros([1,nlag])), axis=0), c3), axis=1)),
+  cmat = _make_arr(
+    (_make_arr((c33, c32, np.zeros([nlag,1])), axis=1),
+    _make_arr((_make_arr((c34, np.zeros([1,nlag])), axis=0), c3), axis=1)),
     axis=0
   )
 
