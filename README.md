@@ -12,7 +12,6 @@ A collection of python functions for feature extraction. The features are calcul
 2. Histogram
 3. Multi-region histogram
 4. Correlogram
-5. 
 ## B. Spatial based plaque features
 ### B.1 Early texture
 1. FOS/SF
