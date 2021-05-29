@@ -45,7 +45,7 @@ A collection of python functions for feature extraction. The features are calcul
 3. Threshold Adjacency Matrix (TAS)
 4. Histogram of Oriented Gradients (HOG)
 
-## User
+## Use
 Download the folder Features, add to path and call
 ```python
 from Features import *
