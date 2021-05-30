@@ -7,10 +7,9 @@ A collection of python functions for feature extraction. The features are calcul
 2. Stratified GSM
 3. JBA
 ### A.2 Histogram based features
-1. PPC1-10
-2. Histogram
-3. Multi-region histogram
-4. Correlogram
+1. Histogram
+2. Multi-region histogram
+3. Correlogram
 ## B. Spatial based plaque features
 ### B.1 Early texture
 1. FOS/SF
