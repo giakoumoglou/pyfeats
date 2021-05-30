@@ -6,7 +6,6 @@ A collection of python functions for feature extraction. The features are calcul
 1. GSM
 2. Stratified GSM
 3. JBA
-4. PW
 ### A.2 Histogram based features
 1. PPC1-10
 2. Histogram
