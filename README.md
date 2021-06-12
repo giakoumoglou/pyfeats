@@ -12,15 +12,15 @@ A collection of python functions for feature extraction. The features are calcul
 3. Correlogram
 ## B. Spatial based plaque features
 ### B.1 Early texture
-1. FOS/SF
-2. GLCM/SGLDM
-3. GLDS
-4. NGTDM
-5. SFM
-6. LTE
-7. FDTA
+1. First Order Statistics/Statistical Features (FOS/SF)
+2. Gray Level Co-occurence Matrix (GLCM/SGLDM)
+3. Gray Level Difference Statistics (GLDS)
+4. Neighborhood Gray Tone Difference Matrix (NGTDM)
+5. Statistical Feature Matrix (SFM)
+6. Law's Texture Energy Measures (LTE/TEM)
+7. Fractal Dimension Texture Analysis (FDTA)
 8. Gray Level Run Length Matrix (GLRLM)
-9. FPS
+9. Fourier Power Spectrum (FPS)
 10. Shape Parameters
 ### B.2 Later texture
 1. Gray Level Size Zone Matrix (GLSZM)
