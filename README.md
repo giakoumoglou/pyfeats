@@ -19,7 +19,7 @@ A collection of python functions for feature extraction. The features are calcul
 5. SFM
 6. LTE
 7. FDTA
-8. Gray Level Size Zone Matrix (GLSZM)
+8. Gray Level Run Length Matrix (GLRLM)
 9. FPS
 10. Shape Parameters
 ### B.2 Later texture
