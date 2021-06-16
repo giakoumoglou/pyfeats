@@ -45,7 +45,7 @@ A collection of python functions for feature extraction. The features are calcul
 ## Use
 Download the folder Features, add to path and call
 ```python
-from Features import *
+from features import *
 ```
 
 ## Support
