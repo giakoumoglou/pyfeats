@@ -4,7 +4,7 @@
 @author: Nikolaos Giakoumoglou
 @date: Thu May  6 21:59:57 2021
 ==============================================================================
-Stratified Gray Scale Median
+A.1 Stratified Gray Scale Median
 ==============================================================================
 Inputs:
     - img:              image

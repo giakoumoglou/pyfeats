@@ -3,8 +3,8 @@
 import numpy as np
 import math
 
-__all__ = ['_energy', '_entropy', '_next_power_of_two', '_pad_image', 
-           '_mean_std', 'gaborKernel2D', 'gaussianFunction','_fft2']
+__all__ = ['_energy', '_entropy', '_next_power_of_two', '_pad_image',
+           '_zero_runs']
 
 def _energy(x):
     return np.multiply(x,x).sum()
@@ -24,37 +24,6 @@ def _pad_image(f):
                     (math.floor(N2_deficit/2),N2_deficit-math.floor(N2_deficit/2))), 
                 mode='constant')
     return f2
-    
-def _mean_std(D):
-    N1, N2 = D.shape
-    mi = sum(sum(abs(D))) / (N1*N2)
-    sigma = sum(sum(abs(D-mi) ** 2)) / (N1*N2)
-    return mi, sigma
-
-def gaborKernel2D(theta, lamda, gamma, bandwidth, phase, 
-                  overlapIndex):
-    qFactor = (1/np.pi) * np.sqrt( (np.log(overlapIndex)/2) ) *  \
-                    ( (2**bandwidth + 1) / (2**bandwidth - 1) )
-    sigma = lamda*qFactor
-    n = np.ceil(4*sigma)
-    [x,y] = np.mgrid[-n:(n+2),-n:(n+2)]
-    xTheta = x * np.cos(theta) + y * np.sin(theta)
-    yTheta = -x * np.sin(theta) + y * np.cos(theta)
-    gaussian = np.exp(-(( xTheta**2) + gamma**2.* (yTheta**2))/(2*sigma**2))
-    res = gaussian * np.cos(2*np.pi*xTheta/lamda +  phase)
-    maxFft = abs(np.fft.fft2(res)).max()
-    normalize = np.fft.fft2(res)/maxFft
-    result = np.real(np.fft.ifft2(normalize))
-    return result, sigma
-    
-def gaussianFunction(f0, s0, overlapIndex):
-    over = np.sqrt(2*np.log(1/overlapIndex))
-    sigma = s0*over/(s0*f0 - over)
-    n = np.ceil(2*sigma)
-    [x,y] = np.mgrid[-n:(n+2),-n:(n+2)]
-    res = np.exp(-1/2*(x**2 + y**2)/sigma**2)
-    res = res / res.sum()
-    return res
 
 def _image_xor(f):
     # Turn "0" to "1" and vice versa: XOR with image consisting of "1"s
@@ -66,53 +35,34 @@ def _image_xor(f):
             out[i,j] = f[i,j] ^ mask[i,j]
     return out
 
-def _fft2(x,msk):
-    r,c = x.shape
-    f1 = np.zeros((r,c), np.complex64)
-    
-    for i in range(1,c+1):
-      sp = 0
-      ep = 0
-      j = 1
-      while (j < r):
-          while (msk[j-1,i-1]==1) & (j < r):
-              if (sp == 0):
-                  sp = j
-              j += 1
-          if (sp > 0) & (ep == 0):
-              if (j < r):
-                  ep = j-1
-              else:
-                  ep = j      
-              f1[(sp-1):(ep),i-1] = np.fft.fft(x[(sp-1):(ep),i-1])
-              sp = 0
-              ep = 0
-          while (msk[j-1,i-1] == 0) & (j < r):
-              j += 1
+def _zero_runs(img, dimension):
+    out = []
+    if dimension == 0:
+        dim0 = img.shape[0] 
+        for dim in range(dim0):
+            a = img[dim, :]
+            iszero = np.concatenate(([0], np.equal(a, 0).view(np.int8), [0]))
+            absdiff = np.abs(np.diff(iszero))
+            ranges = np.where(absdiff == 1)[0].reshape(-1, 2)
+            if ranges.size == 0:
+                continue
+            else:
+                out.append(ranges[0][1]-ranges[0][0]+1)
+    elif dimension == 1:
+        dim1 = img.shape[1] 
+        for dim in range(dim1):
+            a = img[:, dim]
+            iszero = np.concatenate(([0], np.equal(a, 0).view(np.int8), [0]))
+            absdiff = np.abs(np.diff(iszero))
+            ranges = np.where(absdiff == 1)[0].reshape(-1, 2)
+            if ranges.size == 0:
+                continue
+            else:
+                out.append(ranges[0][1]-ranges[0][0]+1)
+    else:
+        print("Error! Dimension must be 0 or 1 in an image.")
+    return max(out)
 
-    f1 = f1.T
-    msk = msk.T
-    
-    for i in range(1,r+1):
-        sp = 0
-        ep = 0
-        j = 1
-        while (j < c):
-          while (msk[j-1,i-1] == 1) & (j < c):
-              if (sp == 0):
-                  sp = j
-              j += 1
-          if (sp > 0) & (ep == 0):
-              if (j < r):
-                  ep = j-1
-              else:
-                  ep = j     
-              f1[(sp-1):(ep),i-1] = np.fft.fft(f1[(sp-1):(ep),i-1])
-              sp = 0
-              ep = 0
-          while (msk[j-1,i-1] == 0) & (j < c):
-              j += 1
-
-    f1 = f1.T
-    msk = msk.T
-    return f1
+    #mask_c = _image_xor(mask)
+    #features[0] = _zero_runs(mask_c, 1)
+    #features[1] = _zero_runs(mask_c, 0)

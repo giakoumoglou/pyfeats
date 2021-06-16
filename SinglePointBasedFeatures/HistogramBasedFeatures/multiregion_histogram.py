@@ -4,7 +4,7 @@
 @author: Nikolaos Giakoumoglou
 @date: Sun May 23 13:24:21 2021
 ==============================================================================
-C.2 Multi-region Histogram
+A.2 Multi-region Histogram
 ==============================================================================
 Inputs:
     - f:        image of dimensions N1 x N2

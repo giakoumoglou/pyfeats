@@ -5,7 +5,7 @@
 @date: Thu May  6 19:10:11 2021
 @reference: [7] Haralick, Textural Features for Image Classification
 ==============================================================================
-A.2 Gray Level Co-occurence Matrix/Spatial Gray level Difference Matrix
+B.1 Gray Level Co-occurence Matrix/Spatial Gray level Difference Matrix
 ==============================================================================
 Inputs:
     - f:             image of dimensions N1 x N2
@@ -43,7 +43,7 @@ def glcm_features(f, ignore_zeros=True):
     
     # 3) Calculate Features: Mean and Range
     features = mahotas.features.haralick(f, 
-                                         ignore_zeros=True, 
+                                         ignore_zeros=ignore_zeros, 
                                          compute_14th_feature=True,
                                          return_mean_ptp=True)
     features_mean = features[0:14]

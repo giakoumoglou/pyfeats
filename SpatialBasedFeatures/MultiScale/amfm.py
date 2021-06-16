@@ -9,7 +9,7 @@
             [44] Murray, Multiscale AMFM Demodulation and Image Reconstruction methods with Improved Accuracy 
             [57] Pattichis, Medical Image Analysis Using AM-FM Models and Methods
 ==============================================================================
-C.9 Amplitude Modulation - Frequency Modulation (AM-FM) using Gabor Filerbank
+B.4 Amplitude Modulation - Frequency Modulation (AM-FM) using Gabor Filerbank
 ==============================================================================
 Inputs:
     - f:        image of dimensions N1 x N2
@@ -23,8 +23,32 @@ Outputs:
 
 import numpy as np
 from  scipy import signal
-from ..utilities import gaborKernel2D,gaussianFunction
 import warnings
+
+def _gabor_kernel_2D(theta, lamda, gamma, bandwidth, phase, 
+                  overlapIndex):
+    qFactor = (1/np.pi) * np.sqrt( (np.log(overlapIndex)/2) ) *  \
+                    ( (2**bandwidth + 1) / (2**bandwidth - 1) )
+    sigma = lamda*qFactor
+    n = np.ceil(4*sigma)
+    [x,y] = np.mgrid[-n:(n+2),-n:(n+2)]
+    xTheta = x * np.cos(theta) + y * np.sin(theta)
+    yTheta = -x * np.sin(theta) + y * np.cos(theta)
+    gaussian = np.exp(-(( xTheta**2) + gamma**2.* (yTheta**2))/(2*sigma**2))
+    res = gaussian * np.cos(2*np.pi*xTheta/lamda +  phase)
+    maxFft = abs(np.fft.fft2(res)).max()
+    normalize = np.fft.fft2(res)/maxFft
+    result = np.real(np.fft.ifft2(normalize))
+    return result, sigma
+    
+def _gaussian_function(f0, s0, overlapIndex):
+    over = np.sqrt(2*np.log(1/overlapIndex))
+    sigma = s0*over/(s0*f0 - over)
+    n = np.ceil(2*sigma)
+    [x,y] = np.mgrid[-n:(n+2),-n:(n+2)]
+    res = np.exp(-1/2*(x**2 + y**2)/sigma**2)
+    res = res / res.sum()
+    return res
  
 def _filterbank():
     lamda0 = 2
@@ -43,12 +67,12 @@ def _filterbank():
     for sc_index in range(scales, 0, -1):
         lamda0 = lamda
         for th in range(theta.shape[0]):
-            result, sig = gaborKernel2D(theta[th], lamda, gamma, bandwidth, phase, 1/overlapIndex);
+            result, sig = _gabor_kernel_2D(theta[th], lamda, gamma, bandwidth, phase, 1/overlapIndex);
             filters .append(result)
         lamda = lamda0 * 2**bandwidth
     # Add DC Filter
     f1      = 2*np.pi/lamda
-    result  = gaussianFunction(f1, sig, overlapIndex)
+    result  = _gaussian_function(f1, sig, overlapIndex)
     filters.append(result)
     return filters
 
@@ -59,7 +83,7 @@ def _calculate_amfm(f):
     # IF = instantanteous frequency (grad φ_n = [grad φ1_n, grad φ2_n])
     IA = np.abs(f)
     IP = np.angle(f)
-    IANorm = np.divide(f, IA)
+    IANorm = np.divide(f, IA+1e-16)
     IFx = np.zeros((N1,N2), np.double)
     IFy = np.zeros((N1,N2), np.double)
     for i in range(1,N1-1):
@@ -96,11 +120,21 @@ def amfm_features(f):
     warnings.simplefilter(action='ignore', category=RuntimeWarning)
     AMFM = []
     filters = _filterbank()
-    hImg = signal.hilbert(f)
+    f_hilbert = signal.hilbert(f)
+    
+    #mask_c = _image_xor(mask)
+    #mask_conv = []
+    #for filtre in filters:
+    #    oneskernel = np.ones(filtre.shape)
+    #    temp = signal.convolve2d(mask_c, oneskernel,'same')
+    #    temp = np.abs(np.sign(temp)-1)
+    #    mask_conv.append(temp)
+        
     for i, filtre in enumerate(filters):
-        filterImg = signal.convolve2d(hImg, np.rot90(filtre), mode='same', 
+        f_filtered = signal.convolve2d(f_hilbert, np.rot90(filtre), mode='same', 
                                       boundary='fill', fillvalue=0)
-        IA, IP, IFx, IFy = _calculate_amfm(filterImg)
+        #f_filtered = f_filtered * mask_conv[i]
+        IA, IP, IFx, IFy = _calculate_amfm(f_filtered)
         IA = np.nan_to_num(IA)
         IP = np.nan_to_num(IP)
         IFx = np.nan_to_num(IFx)

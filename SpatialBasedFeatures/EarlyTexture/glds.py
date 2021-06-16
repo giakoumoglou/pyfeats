@@ -5,7 +5,7 @@
 @date: Thu May  6 19:10:11 2021
 @reference: [8] Weszka, A Comparative Study of Texture Measures for Terrain Classification
 ==============================================================================
-A.3 Gray Level Difference Statistics
+B.1 Gray Level Difference Statistics
 ==============================================================================
 Inputs:
     - f:        image of dimensions N1 x N2
@@ -24,24 +24,21 @@ def glds(f, mask, dx, dy, Ng):
     
     N1, N2 = f.shape
     
-    # Calculate f_d(x,y)
+    # Calculate f_d(x,y). If calculation includes pixel outside mask, ignore it.
     f_d = np.zeros((N1,N2), np.double) 
-    mask_d = np.zeros((N1,N2), np.double) 
     for x in range(N1):
         for y in range(N2):
-            if (x+dx < N1) & (y+dy < N2) & (x+dx >= 0) & (y+dy >= 0):
-                f_d[x,y] = abs(f[x,y] - f[x+dx,y+dy])  
-                mask_d[x+dx,y+dy] = 1
-    #mask_d[mask_d>1] = 1       
+            if (x+dx < N1) & (y+dy < N2) & (x+dx >= 0) & (y+dy >= 0) & (mask[x,y]==1):
+                f_d[x,y] = abs(f[x,y] - f[x+dx,y+dy])      
             
     # Calculate pd_(i)
     f_d_ravel = f_d.ravel()
-    mask_d_ravel = mask_d.ravel()
-    roi = f_d_ravel[mask_d_ravel.astype(bool)]
+    mask_ravel = mask.ravel()
+    roi = f_d_ravel[mask_ravel.astype(bool)]
     p_d = np.histogram(roi, bins=Ng, range=(0,Ng-1))[0] # histogram of f_d in ROI
         
     return f_d, p_d
-        
+     
 def glds_features(f, mask, Dx=[0,1,1,1], Dy=[1,1,0,-1]):
     
     # 1) Labels

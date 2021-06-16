@@ -8,7 +8,7 @@
             [37] Acharya, Automatic identification of epileptic eeg singal susing nonlinear parameters
             [38] Acharya, Application of higher order spectra for the identification of diabetes retinopathy stages
 ==============================================================================            
-C.4 Higher Order Spectra on Radeon Transform
+B.2 Higher Order Spectra on Radeon Transform
 ==============================================================================
 1. Image 2D I(x,y)
 2. Radon Transform (theta) -> output: projection 1D
@@ -28,17 +28,19 @@ import numpy as np
 from skimage.transform import radon
 import matplotlib.pyplot as plt
 import warnings
-from ..utilities import _entropy
 from .bispectrum import _bispectrum  
+
+def _entropy(x):
+    return -np.multiply(x, np.log(x+1e-16)).sum()
 
 def hos_features(f, th=[135,140]):
     
     warnings.filterwarnings("ignore")
-    f = f.astype(np.double)
+    f = f.astype(np.float32)
     th = np.array([th]).reshape(-1)
     N1, N2 = f.shape
     
-    radon_transform = radon(f.astype(np.uint8), theta=th)
+    radon_transform = radon(f, theta=th)
     
     entropy = []
     labels = ['HOS_'+str(t)+'_degrees' for t in th]
@@ -63,3 +65,4 @@ def plot_sinogram(f, name=''):
            aspect='auto')
     plt.title('Sinogram '+name)
     warnings.filterwarnings("default")
+    

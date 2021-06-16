@@ -4,7 +4,8 @@
 @author: Nikolaos Giakoumoglou
 @date: Sun May  9 21:46:00 2021
 ==============================================================================
-Jaxtaluminal Black Area (JBA)
+1.1 Jaxtaluminal Black Area (JBA)
+==============================================================================
 Find area near lumen with luminocity < 25. Area is defined as perc% near the
 perimeter of lumen
 ==============================================================================

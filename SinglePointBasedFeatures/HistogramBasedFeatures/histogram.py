@@ -4,7 +4,7 @@
 @author: Nikolaos Giakoumoglou
 @date: Wed May 12 09:51:50 2021
 ==============================================================================
-C.1 Histogram
+A.2 Histogram
 ==============================================================================
 Inputs:
     - f:        image of dimensions N1 x N2
@@ -20,13 +20,12 @@ Outputs:
 import numpy as np
 import matplotlib.pyplot as plt
 
-def histogram(f, mask, bins=32):   
+def histogram(f, mask, bins=32): 
+    
+    roi = np.ma.masked_array(f, mask=mask)  
     level_min = 0
     level_max = 255
-    f_ravel = f.ravel()
-    mask_ravel = mask.ravel() 
-    roi = f_ravel[mask_ravel.astype(bool)]
-    H = np.histogram(roi, bins=bins, range=[level_min, level_max])[0]
+    H = np.histogram(roi, bins=bins, range=[level_min, level_max], density=True)[0]
     labels = ['Histogram_bin_'+str(b) for b in range(bins)] 
     return H, labels
         

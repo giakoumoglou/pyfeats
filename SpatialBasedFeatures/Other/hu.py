@@ -5,7 +5,7 @@
 @date: Thu May 20 18:37:25 2021
 @reference: [55] Hu, Visual Pattern Recognition by Moment Invariants
 ==============================================================================
-C.13 Hu's moments
+B.5 Hu's moments
 ==============================================================================
 Inputs:
     - f:         image of dimensions N1 x N2

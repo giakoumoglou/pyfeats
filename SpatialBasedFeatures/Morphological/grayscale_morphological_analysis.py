@@ -6,8 +6,7 @@
 @reference: [33] Maragos, Pattern Spectrum and Multiscale Shape Representation
             [45] Maragos, Threshold Superposition in Morphological Image Analysis Systems
 ==============================================================================
-Grayscale Mophological Analysis
-See the reference for more details
+B.3 Grayscale Mophological Analysis
 ==============================================================================
 Inputs:
     - img:      image of dimensions N1 x N2

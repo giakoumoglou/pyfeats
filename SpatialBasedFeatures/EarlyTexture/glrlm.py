@@ -1,14 +1,19 @@
 # -*- coding: utf-8 -*-
 """
 ==============================================================================
+@author: Nikolaos Giakoumoglou
+@author: https://github.com/eiproject/lib-GLRLM-Python3/blob/master/lib-GLRLM/libpreprocessing.py
 @author: https://github.com/szhHr/Gray-Level-Run-Length-Matrix-to-get-image-feature/blob/master/GrayRumatrix.py
 @date: Sat May  8 17:00:35 2021
 @reference: [30] Gallowway, Texture Analysis using Gray Level Run Lengths
 ==============================================================================
-A8. Gray Level Run Length Matrix
+B.1 Gray Level Run Length Matrix
 ==============================================================================
 Inputs:
     - f:        image of dimensions N1 x N2
+    - mask:     int boolean image N1 x N2 with 1 if pixels belongs to ROI, 
+                0 else
+    - Ng:       number of gray levels (default=256)
 Outputs:
     - features: 1)Short Run Emphasis, 2)Long Run Emphasis, 3)Gray Level 
                 Non-Uniformity/Gray Level Distribution, 4)Run Length 
@@ -21,7 +26,143 @@ Outputs:
 """
     
 import numpy as np
-from itertools import groupby
+
+def glrlm_0(f, mask, grayLevel=5, runLength=5):
+    degree0Matrix = np.zeros([grayLevel, runLength])
+    counter = 0
+    for y in range(f.shape[0]):
+        for x in range(f.shape[1]):
+            if mask[y,x] == 0:
+                continue
+            nowVal = f[y][x]
+            if x + 1 >= f.shape[1]:
+                nextVal = None
+            else:
+                nextVal = f[y][x + 1]
+            if nextVal != nowVal and counter == 0:
+                degree0Matrix[int(nowVal)][counter] += 1
+            elif nextVal == nowVal:
+                counter += 1
+            elif nextVal != nowVal and counter != 0:
+                degree0Matrix[int(nowVal)][counter] += 1
+                counter = 0
+    return degree0Matrix
+
+def glrlm_90(f, mask, grayLevel=5, runLength=5):
+    degree90Matrix = np.zeros([grayLevel, runLength])
+    counter = 0
+    for x in range(f.shape[1]):
+        for y in range(f.shape[0]):
+            if mask[y,x] == 0:
+                continue    
+            nowVal = f[y][x]
+            if y + 1 >= f.shape[0]:
+                nextVal = None
+            else:
+                nextVal = f[y + 1][x]
+            if nextVal != nowVal and counter == 0:
+                degree90Matrix[int(nowVal)][counter] += 1
+            elif nextVal == nowVal:
+                counter += 1
+            elif nextVal != nowVal and counter != 0:
+                degree90Matrix[int(nowVal)][counter] += 1
+                counter = 0
+    return degree90Matrix
+
+def glrlm_45(f, mask, grayLevel=5, runLength=5):
+    degree45Matrix = np.zeros([grayLevel, runLength])
+    for y in range(f.shape[0]):
+        counter = 0
+        i_range = max(f.shape)
+        for i in range(i_range):
+            y1 = y - i
+            if i >= f.shape[1] or y1 < 0:
+                break
+            else:
+                nowVal = f[y1][i]
+            if y1 - 1 < 0 or i + 1 >= f.shape[1]:
+                nextVal = None
+            else:
+                nextVal = f[y1 - 1][i + 1]
+            if nextVal != nowVal and counter == 0:
+                degree45Matrix[int(nowVal)][counter] += 1
+            elif nextVal == nowVal:
+                counter += 1
+            elif nextVal != nowVal and counter != 0:
+                degree45Matrix[int(nowVal)][counter] += 1
+                counter = 0
+    for x in range(f.shape[1]):
+        if x == f.shape[1] - 1:
+            break
+        counter = 0
+        i_range = max(f.shape)
+        for i in range(i_range):
+            y_i = -1 - i
+            x_i = -1 + i - x
+            if x_i >= 0 or y_i <= -1 - f.shape[0]:
+                break
+            else:
+                nowVal = f[y_i][x_i]
+            if y_i - 1 <= -(f.shape[0] + 1) or x_i + 1 >= 0:
+                nextVal = None
+            else:
+                nextVal = f[y_i - 1][x_i + 1]
+            if nextVal != nowVal and counter == 0:
+                degree45Matrix[int(nowVal)][counter] += 1
+            elif nextVal == nowVal:
+                counter += 1
+            elif nextVal != nowVal and counter != 0:
+                degree45Matrix[int(nowVal)][counter] += 1
+                counter = 0
+    degree45Matrix[0,1:] = 0
+    return degree45Matrix
+
+def glrlm_135(f, mask, grayLevel=5, runLength=5):
+    degree135Matrix = np.zeros([grayLevel, runLength])
+    for y in range(f.shape[0]):
+        counter = 0
+        i_range = max(f.shape)
+        for i in range(i_range):
+            y1 = y + i
+            if y1 >= f.shape[0] or i >= f.shape[1]:
+                break
+            else:
+                nowVal = f[y1][i]
+                if y1 >= f.shape[0] - 1 or i >= f.shape[1] - 1:
+                    nextVal = None
+                else:
+                    nextVal = f[y1 + 1][i + 1]
+                if nextVal != nowVal and counter == 0:
+                    degree135Matrix[int(nowVal)][counter] += 1
+                elif nextVal == nowVal:
+                    counter += 1
+                elif nextVal != nowVal and counter != 0:
+                    degree135Matrix[int(nowVal)][counter] += 1
+                    counter = 0
+    for x in range(f.shape[1]):
+        if x == 0:
+            continue
+        i_range = max(f.shape)
+        counter = 0
+        for i in range(i_range):
+            x1 = x + i
+            if i >= f.shape[0] or x1 >= f.shape[1]:
+                break
+            else:
+                nowVal = f[i][x1]
+            if i >= f.shape[0] - 1 or x1 >= f.shape[1] - 1:
+                nextVal = None
+            else:
+                nextVal = f[i + 1][x1 + 1]
+            if nextVal != nowVal and counter == 0:
+                degree135Matrix[int(nowVal)][counter] += 1
+            elif nextVal == nowVal:
+                counter += 1
+            elif nextVal != nowVal and counter != 0:
+                degree135Matrix[int(nowVal)][counter] += 1
+                counter = 0
+    degree135Matrix[0,1:] = 0
+    return degree135Matrix
 
 def _apply_over_degree(function, x1, x2):
     if function == np.divide:
@@ -42,46 +183,17 @@ def _calculate_ij (rlmatrix):
 def _calculate_s(rlmatrix):
     return np.apply_over_axes(np.sum, rlmatrix, axes=(0, 1))[0, 0]
 
-def glrlm(f, theta):
-        
-    P = np.array(f, np.double)
-    x, y = P.shape
-    min_pixels = np.min(P)   # the min pixel
-    run_length = max(x, y)   # Maximum parade length in pixels
-    num_level = np.max(P) - np.min(P) + 1   # Image gray level
-        
-    deg0 = [val.tolist() for sublist in np.vsplit(P, x) for val in sublist]   # 0deg
-    deg90 = [val.tolist() for sublist in np.split(np.transpose(P), y) for val in sublist]   # 90deg
-    diags = [P[::-1, :].diagonal(i) for i in range(-P.shape[0]+1, P.shape[1])]   #45deg
-    deg45 = [n.tolist() for n in diags]
-    Pt = np.rot90(P, 3)   # 135deg
-    diags = [Pt[::-1, :].diagonal(i) for i in range(-Pt.shape[0]+1, Pt.shape[1])]
-    deg135 = [n.tolist() for n in diags]
-        
-    def length(l):
-        if hasattr(l, '__len__'):
-            return np.size(l)
-        else:
-            i = 0
-            for _ in l:
-                i += 1
-            return i
-        
-    glrlm = np.zeros((num_level.astype('i'), run_length, len(theta)))   
-    for angle in theta:
-        for splitvec in range(0, len(eval(angle))):
-            flattened = eval(angle)[splitvec]
-            answer = []
-            for key, iter in groupby(flattened):  
-                answer.append((key, length(iter)))   
-            for ansIndex in range(0, len(answer)):
-                glrlm[int(answer[ansIndex][0]-min_pixels), int(answer[ansIndex][1]-1), theta.index(angle)] += 1 
-            
-    return glrlm
+def glrlm(f, mask, grayLevel=256):   
+    runLength = max(f.shape)
+    mat0 = glrlm_0(f, mask, grayLevel=grayLevel, runLength=runLength)
+    mat45 = glrlm_45(f, mask, grayLevel=grayLevel, runLength=runLength)
+    mat90 = glrlm_90(f, mask, grayLevel=grayLevel, runLength=runLength)
+    mat135 = glrlm_135(f, mask, grayLevel=grayLevel, runLength=runLength)            
+    mat = np.dstack((mat0, mat45, mat90, mat135))      
+    return mat
 
-def glrlm_features(f):
+def glrlm_features(f, mask, Ng=256):
     
-    th=['deg0','deg45','deg90','deg135']
     labels = ["GLRLM_ShortRunEmphasis",
               "GLRLM_LongRunEmphasis",
               "GLRLM_GrayLevelNo-Uniformity",
@@ -94,7 +206,7 @@ def glrlm_features(f):
               "GLRLM_LongRunLowGrayLevelEmphasis",
               "GLRLM_LongRunHighGrayLevelEmphasis"]
     
-    rlmatrix = glrlm(f,th)
+    rlmatrix = glrlm(f, mask, Ng)
         
     I, J = _calculate_ij(rlmatrix)
     S = _calculate_s(rlmatrix)

@@ -6,7 +6,7 @@
 @date: Fri May  7 13:53:51 2021
 @reference: [9] Amadasun, Texural Features Corresponding to Textural Properties
 ==============================================================================
-A.4 Neighborhood Gray Tone Difference Matrix
+B.1 Neighborhood Gray Tone Difference Matrix
 ==============================================================================
 Inputs:
     - f:        image of dimensions N1 x N2

@@ -6,7 +6,8 @@
 @reference: [39] Ojala, A Comparative Study of Texture Measures with Classification on Feature Distributions
             [40] Ojala, Gray Scale and Roation Invariaant Texture Classification with Local Binary Patterns
 ==============================================================================
-C.5 Local Binary Pattern
+B.2 Local Binary 
+==============================================================================
 1. Image f(x,y)
 2. Image LBP(P,R)(x,y) from f(x,y) with P neigbors and radius R
 3. Features: energy & entropy of LBP(P,R)(x,y)
@@ -24,7 +25,12 @@ Outputs:
 
 import numpy as np
 from skimage import feature
-from ..utilities import _energy, _entropy
+
+def _energy(x):
+    return np.multiply(x,x).sum()
+
+def _entropy(x):
+    return -np.multiply(x, np.log(x+1e-16)).sum()
 
 def lbp_features(f, mask, P=[8,16,24], R=[1,2,3]):
     P = np.array(P)

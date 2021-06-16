@@ -4,17 +4,20 @@
 @author: Nikolaos Giakoumoglou
 @date: Fri May 14 10:33:48 2021
 ==============================================================================
-C.10 Correlogram
+A.2 Correlogram
 ==============================================================================
 Inputs:
-    - f:        image of dimensions N1 x N2
-    - mask:     int boolean image N1 x N2 with 1 if pixels belongs to ROI, 
-                0 else
+    - f:              image of dimensions N1 x N2
+    - mask:           int boolean image N1 x N2 with 1 if pixels belongs to  
+                      ROI, 0 else 
     - bins_digitize:  number of bins for discrete distances and thetas
-    - bins_hist:      number of bins for histogram
+                      (default=32)
+    - bins_hist:      number of bins for histogram (default=32)
+    - flatten:        return correlogram as 1d array if True or 2d array if
+                      False (default=False)
 Outputs:
-    - features: [bins_digitize x bins_hist] feature vector for distance 
-                and a same one for theta e.g. [32 x 32]
+    - features:      [bins_digitize x bins_hist] feature vector for distance 
+                     and a same one for theta e.g. [32 x 32]
 ==============================================================================
 """
 import numpy as np
@@ -34,6 +37,7 @@ def correlogram(f, mask, bins_digitize = 32, bins_hist = 32, flatten=False):
     for i in range(N1):
         for j in range(N2):
             D[i,j] = distance.euclidean(c, [i,j])
+    D[mask == 0] = 0
     D /= D.max() # normalise to [0,1]
     D = np.digitize(D, bins=np.arange(0,1,1/bins_digitize), 
                     right=False).astype(np.float)
@@ -50,7 +54,7 @@ def correlogram(f, mask, bins_digitize = 32, bins_hist = 32, flatten=False):
     for i in range(N1):
         for j in range(N2):
             x = j - c[1]
-            y = -(i - c[0]) # fak python
+            y = -(i - c[0])
             angle = np.arctan2(y,x)
             T[i,j] = np.degrees(angle)
             
@@ -64,11 +68,13 @@ def correlogram(f, mask, bins_digitize = 32, bins_hist = 32, flatten=False):
     for b in range(bins_digitize):
         Ht[b,:] = np.histogram(f[T==(b+1)], bins=bins_hist, range=(0,Ng-1))[0]
 
+    # Step 4: Create label
     labels = []
     for i in range(bins_digitize):
         for j in range(bins_hist):
             labels.append('Correlogram_'+str(i)+'_'+str(j))
-            
+    
+    # Step 5: Return flatten or 2d array
     if (flatten == True):
         return Hd.flatten(), Ht.flatten(), labels
     else:

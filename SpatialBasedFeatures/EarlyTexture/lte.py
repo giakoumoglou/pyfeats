@@ -7,7 +7,7 @@
             [?] Law, Rapid Texture Identification
             [Book] Haralick, Computer and Robot Vision Vol. 1
 ==============================================================================
-A.6 Law's Texture Energy Measures
+B.1 Law's Texture Energy Measures
 ==============================================================================
 Inputs:
     - f:        image of dimensions N1 x N2
