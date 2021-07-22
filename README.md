@@ -3,16 +3,6 @@ A collection of python functions for feature extraction. The features are calcul
 
 ## Features
 
-### Single-point Features
-1. GSM
-2. Stratified GSM
-3. JBA
-
-### Histogram based features
-1. Histogram
-2. Multi-region histogram
-3. Correlogram
-
 ### Textural Features
 1. First Order Statistics/Statistical Features (FOS/SF)
 2. Gray Level Co-occurence Matrix (GLCM/SGLDM)
@@ -32,6 +22,11 @@ A collection of python functions for feature extraction. The features are calcul
 1. Grayscale Morphological Analysis
 2. Multilevel Binary Morphological Analysis
 
+### Histogram based features
+1. Histogram
+2. Multi-region histogram
+3. Correlogram
+
 ### Multi-scale Features
 1. Fractal Dimension Texture Analysis (FDTA)
 2. Amplitude Modulation – Frequency Modulation (AM-FM)
@@ -39,6 +34,11 @@ A collection of python functions for feature extraction. The features are calcul
 4. Stationary Wavelet Transform (SWT)
 5. Wavelet Packets (WP)
 6. Gabor Transform (GT)
+
+### Single-point Features
+1. GSM
+2. Stratified GSM
+3. JBA
 
 ### Other Features
 1. Zernikes’ Moments
