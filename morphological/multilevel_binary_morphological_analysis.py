@@ -3,10 +3,10 @@
 ==============================================================================
 @author: Nikolaos Giakoumoglou
 @date: Tue May 11 13:20:14 2021
-@reference: [33] Maragos, Pattern Spectrum and Multiscale Shape Representation
-            [45] Maragos, Threshold Superposition in Morphological Image Analysis Systems
+@reference: Maragos, Pattern Spectrum and Multiscale Shape Representation
+            Maragos, Threshold Superposition in Morphological Image Analysis Systems
 ==============================================================================
-B.3 Multilevel Binary Morphological Analysis
+Multilevel Binary Morphological Analysis
 ==============================================================================
 Inputs:
     - img:      image of dimensions N1 x N2

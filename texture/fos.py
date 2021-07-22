@@ -4,7 +4,7 @@
 @author: Nikolaos Giakoumoglou
 @date: Thu May  6 21:59:57 2021
 ==============================================================================
-B.1 First Order Statistics/Statistical Features
+First Order Statistics/Statistical Features
 ==============================================================================
 Inputs:
     - f:        image of dimensions N1 x N2

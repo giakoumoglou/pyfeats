@@ -1,3 +1,29 @@
+# -*- coding: utf-8 -*-
+"""
+==============================================================================
+@author: Nikolaos Giakoumoglou
+@date: Wed May 12 17:37:03 2021
+@reference: Chua, Automatic indentification of epilepsy by hos and power spectrum parameters using eeg signals
+            Chua, Application of Higher Order Spectra to Identify Epileptic eeg
+            Acharya, Automatic identification of epileptic eeg singal susing nonlinear parameters
+            Acharya, Application of higher order spectra for the identification of diabetes retinopathy stages
+==============================================================================            
+Higher Order Spectra on Radeon Transform
+==============================================================================
+1. Image 2D I(x,y)
+2. Radon Transform (theta) -> output: projection 1D
+3. Bispectrum of projection -> output: 2D array f1 x f2 (=128)
+4. Features: entropy of 2D array f1 x f2
+==============================================================================
+Inputs:
+    - f:        image of dimensions N1 x N2
+    - th:       theta to calculate radeon transform (135,140 used in [12])
+Outputs:
+    - features: entropy of bispectrum of radeon transform of image for each 
+                angle in theta
+==============================================================================
+"""
+
 from scipy import ndimage
 import numpy as np
 import matplotlib.pyplot as plt

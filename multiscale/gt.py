@@ -3,9 +3,9 @@
 ==============================================================================
 @author: Nikolaos Giakoumoglou
 @date: Mon Thu May 13 13:14:35 2021
-@reference: [41] Tsiaparas, Comparison of Multiresolution Features for Texture Classification of Carotid Atherosclerosis From B-Mode Ultrasound
+@reference: Tsiaparas, Comparison of Multiresolution Features for Texture Classification of Carotid Atherosclerosis From B-Mode Ultrasound
 ==============================================================================
-B.4 Gabor Transform (GT)
+Gabor Transform (GT)
 ==============================================================================
 Inputs:
     - f:        image of dimensions N1 x N2

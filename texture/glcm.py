@@ -3,9 +3,9 @@
 ==============================================================================
 @author: Nikolaos Giakoumoglou
 @date: Thu May  6 19:10:11 2021
-@reference: [7] Haralick, Textural Features for Image Classification
+@reference: Haralick, Textural Features for Image Classification
 ==============================================================================
-B.1 Gray Level Co-occurence Matrix/Spatial Gray level Difference Matrix
+Gray Level Co-occurence Matrix/Spatial Gray level Difference Matrix
 ==============================================================================
 Inputs:
     - f:             image of dimensions N1 x N2

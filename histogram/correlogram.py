@@ -4,7 +4,7 @@
 @author: Nikolaos Giakoumoglou
 @date: Fri May 14 10:33:48 2021
 ==============================================================================
-A.2 Correlogram
+Correlogram
 ==============================================================================
 Inputs:
     - f:              image of dimensions N1 x N2

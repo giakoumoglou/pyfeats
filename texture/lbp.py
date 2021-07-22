@@ -3,10 +3,10 @@
 ==============================================================================
 @author: Nikolaos Giakoumoglou
 @date: Thu May 13 09:50:26 2021
-@reference: [39] Ojala, A Comparative Study of Texture Measures with Classification on Feature Distributions
-            [40] Ojala, Gray Scale and Roation Invariaant Texture Classification with Local Binary Patterns
+@reference: Ojala, A Comparative Study of Texture Measures with Classification on Feature Distributions
+            Ojala, Gray Scale and Roation Invariaant Texture Classification with Local Binary Patterns
 ==============================================================================
-B.2 Local Binary 
+Local Binary Pattern (LBP)
 ==============================================================================
 1. Image f(x,y)
 2. Image LBP(P,R)(x,y) from f(x,y) with P neigbors and radius R

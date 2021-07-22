@@ -4,7 +4,7 @@
 @author: Nikolaos Giakoumoglou
 @date: Sat May  8 12:14:26 2021
 ==============================================================================
-B.1 Shape Parameters
+Shape Parameters
 ==============================================================================
 Inputs:
     - f:              image of dimensions N1 x N2

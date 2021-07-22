@@ -5,11 +5,11 @@
 @author: Ioannis Constantinou,
 @author: Marios S. Pattichis
 @author: Constantinos S. Pattichis
-@reference: [43] Murray, An AM-FM model for Motion Estimation in Atherosclerotic Plaque Videos
-            [44] Murray, Multiscale AMFM Demodulation and Image Reconstruction methods with Improved Accuracy 
-            [57] Pattichis, Medical Image Analysis Using AM-FM Models and Methods
+@reference: Murray, An AM-FM model for Motion Estimation in Atherosclerotic Plaque Videos
+            Murray, Multiscale AMFM Demodulation and Image Reconstruction methods with Improved Accuracy 
+            Pattichis, Medical Image Analysis Using AM-FM Models and Methods
 ==============================================================================
-B.4 Amplitude Modulation - Frequency Modulation (AM-FM) using Gabor Filerbank
+Amplitude Modulation - Frequency Modulation (AM-FM) using Gabor Filerbank
 ==============================================================================
 Inputs:
     - f:        image of dimensions N1 x N2

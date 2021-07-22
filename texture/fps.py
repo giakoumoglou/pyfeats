@@ -3,10 +3,10 @@
 ==============================================================================
 @author: Nikolaos Giakoumoglou
 @date: May  8 15:18:53 2021
-@reference: [8] Weszka, A Comparative Study of Texture Measures for Terrain Classification
-            [11] Wu, Texture Features for Classification
+@reference: Weszka, A Comparative Study of Texture Measures for Terrain Classification
+            Wu, Texture Features for Classification
 ==============================================================================
-B.1 Fourier Power Spectrum
+Fourier Power Spectrum
 ==============================================================================
 Inputs:
     - f:        image of dimensions N1 x N2

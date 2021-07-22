@@ -3,9 +3,9 @@
 ==============================================================================
 @author: Nikolaos Giakoumoglou
 @date: Thu May 20 21:16:32 2021
-@reference: [56] Thibault, Texture Indexes and Gray Level Size Zone Matrix Application to Cell Nuclei Classification
+@reference: Thibault, Texture Indexes and Gray Level Size Zone Matrix Application to Cell Nuclei Classification
 ==============================================================================
-B.2 Gray Level Size Zone Matrix (GLSZM)
+Gray Level Size Zone Matrix (GLSZM)
 ==============================================================================
 Inputs:
     - f:        image of dimensions N1 x N2

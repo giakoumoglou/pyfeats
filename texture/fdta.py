@@ -3,9 +3,9 @@
 ==============================================================================
 @author: Christos Loizou
 @date: Sat May  8 09:42:10 2021
-@reference: [11] Wu, Texture Features for Classification
+@reference: Wu, Texture Features for Classification
 ==============================================================================
-B.1 Fractal Dimension Texture Analysis
+Fractal Dimension Texture Analysis
 ==============================================================================
 Inputs:
     - f:        image of dimensions N1 x N2

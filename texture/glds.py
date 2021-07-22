@@ -3,9 +3,9 @@
 ==============================================================================
 @author: Nikolaos Giakoumoglou
 @date: Thu May  6 19:10:11 2021
-@reference: [8] Weszka, A Comparative Study of Texture Measures for Terrain Classification
+@reference: Weszka, A Comparative Study of Texture Measures for Terrain Classification
 ==============================================================================
-B.1 Gray Level Difference Statistics
+Gray Level Difference Statistics
 ==============================================================================
 Inputs:
     - f:        image of dimensions N1 x N2

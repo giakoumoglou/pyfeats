@@ -3,11 +3,11 @@
 ==============================================================================
 @author: Nikolaos Giakoumoglou
 @date: Fri May  7 19:28:12 2021
-@reference: [11] Wu, Texture Features for Classification
-            [?] Law, Rapid Texture Identification
-            [Book] Haralick, Computer and Robot Vision Vol. 1
+@reference: Wu, Texture Features for Classification
+            Law, Rapid Texture Identification
+            Haralick, Computer and Robot Vision Vol. 1
 ==============================================================================
-B.1 Law's Texture Energy Measures
+Law's Texture Energy Measures
 ==============================================================================
 Inputs:
     - f:        image of dimensions N1 x N2

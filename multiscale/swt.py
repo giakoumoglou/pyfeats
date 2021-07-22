@@ -3,9 +3,9 @@
 ==============================================================================
 @author: Nikolaos Giakoumoglou
 @date: Thu May 13 11:01:34 2021
-@reference: [41] Tsiaparas, Comparison of Multiresolution Features for Texture Classification of Carotid Atherosclerosis From B-Mode Ultrasound
+@reference: Tsiaparas, Comparison of Multiresolution Features for Texture Classification of Carotid Atherosclerosis From B-Mode Ultrasound
 ==============================================================================
-B.4 Stationary Wavelet Transform (SWT)
+Stationary Wavelet Transform (SWT)
 ==============================================================================
 Inputs:
     - f:         image of dimensions N1 x N2

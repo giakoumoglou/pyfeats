@@ -3,9 +3,9 @@
 ==============================================================================
 @author: Nikolaos Giakoumoglou
 @date: Thu May 20 13:46:57 2021
-@reference: [54] Teague, Image analysis via the general theory of moments
+@reference: Teague, Image analysis via the general theory of moments
 ==============================================================================
-B.5 Zernike's Moments
+Zernike's Moments
 ==============================================================================
 Inputs:
     - f:             image of dimensions N1 x N2

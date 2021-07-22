@@ -4,7 +4,7 @@
 @author: Nikolaos Giakoumoglou
 @date: Thu May 20 11:51:54 2021
 ==============================================================================
-B.5 Histogram of Oriented Gradients
+Histogram of Oriented Gradients
 ==============================================================================
 Inputs:
     - f:        image of dimensions N1 x N2

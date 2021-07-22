@@ -3,9 +3,9 @@
 ==============================================================================
 @author: Nikolaos Giakoumoglou
 @date: Thu May 13 12:14:15 2021
-@reference: [41] Tsiaparas, Comparison of Multiresolution Features for Texture Classification of Carotid Atherosclerosis From B-Mode Ultrasound
+@reference: siaparas, Comparison of Multiresolution Features for Texture Classification of Carotid Atherosclerosis From B-Mode Ultrasound
 ==============================================================================
-B.4 Wavelet Packets (WP)
+Wavelet Packets (WP)
 ==============================================================================
 Inputs:
     - f:         image of dimensions N1 x N2

@@ -3,11 +3,11 @@
 ==============================================================================
 @author: Nikolaos Giakoumoglou
 @date: Mon May 10 12:42:30 2021
-@reference: [12] Acharya, AtheromaticTM Symptomatic vs. Asymptomatic Classification
-            [13] Acharya, Carotid Ultrasound Symptomatology using Atherosclerotic Plaque
-            [41] Tsiaparas, Comparison of Multiresolution Features for Texture Classification of Carotid Atherosclerosis From B-Mode Ultrasound
+@reference: Acharya, AtheromaticTM Symptomatic vs. Asymptomatic Classification
+            Acharya, Carotid Ultrasound Symptomatology using Atherosclerotic Plaque
+            Tsiaparas, Comparison of Multiresolution Features for Texture Classification of Carotid Atherosclerosis From B-Mode Ultrasound
 ==============================================================================
-B.4 Discrete Wavelet Transform (DWT)
+Discrete Wavelet Transform (DWT)
 ==============================================================================
 Inputs:
     - f:         image of dimensions N1 x N2

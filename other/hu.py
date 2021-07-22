@@ -3,9 +3,9 @@
 ==============================================================================
 @author: Nikolaos Giakoumoglou
 @date: Thu May 20 18:37:25 2021
-@reference: [55] Hu, Visual Pattern Recognition by Moment Invariants
+@reference: Hu, Visual Pattern Recognition by Moment Invariants
 ==============================================================================
-B.5 Hu's moments
+Hu's moments
 ==============================================================================
 Inputs:
     - f:         image of dimensions N1 x N2

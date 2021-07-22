@@ -5,9 +5,9 @@
 @author: https://github.com/eiproject/lib-GLRLM-Python3/blob/master/lib-GLRLM/libpreprocessing.py
 @author: https://github.com/szhHr/Gray-Level-Run-Length-Matrix-to-get-image-feature/blob/master/GrayRumatrix.py
 @date: Sat May  8 17:00:35 2021
-@reference: [30] Gallowway, Texture Analysis using Gray Level Run Lengths
+@reference: Gallowway, Texture Analysis using Gray Level Run Lengths
 ==============================================================================
-B.1 Gray Level Run Length Matrix
+Gray Level Run Length Matrix
 ==============================================================================
 Inputs:
     - f:        image of dimensions N1 x N2

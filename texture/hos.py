@@ -3,12 +3,12 @@
 ==============================================================================
 @author: Nikolaos Giakoumoglou
 @date: Wed May 12 17:37:03 2021
-@reference: [35] Chua, Automatic indentification of epilepsy by hos and power spectrum parameters using eeg signals
-            [36] Chua, Application of Higher Order Spectra to Identify Epileptic eeg
-            [37] Acharya, Automatic identification of epileptic eeg singal susing nonlinear parameters
-            [38] Acharya, Application of higher order spectra for the identification of diabetes retinopathy stages
+@reference: Chua, Automatic indentification of epilepsy by hos and power spectrum parameters using eeg signals
+            Chua, Application of Higher Order Spectra to Identify Epileptic eeg
+            Acharya, Automatic identification of epileptic eeg singal susing nonlinear parameters
+            Acharya, Application of higher order spectra for the identification of diabetes retinopathy stages
 ==============================================================================            
-B.2 Higher Order Spectra on Radeon Transform
+Higher Order Spectra on Radeon Transform
 ==============================================================================
 1. Image 2D I(x,y)
 2. Radon Transform (theta) -> output: projection 1D

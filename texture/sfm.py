@@ -3,9 +3,9 @@
 ==============================================================================
 @author: Christos Loizou
 @date: Fri May  7 16:20:47 2021
-@reference: [10] Wu, Statistical Feature Matrix for Texture Analysis
+@reference: Wu, Statistical Feature Matrix for Texture Analysis
 ==============================================================================
-B.1 Statistical Feature Matrix
+Statistical Feature Matrix
 ==============================================================================
 Inputs:
     - f:        image of dimensions N1 x N2

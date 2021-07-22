@@ -4,9 +4,9 @@
 @author: Christos Loizou
 @author: Nikolaos Giakoumoglou
 @date: Fri May  7 13:53:51 2021
-@reference: [9] Amadasun, Texural Features Corresponding to Textural Properties
+@reference: Amadasun, Texural Features Corresponding to Textural Properties
 ==============================================================================
-B.1 Neighborhood Gray Tone Difference Matrix
+Neighborhood Gray Tone Difference Matrix
 ==============================================================================
 Inputs:
     - f:        image of dimensions N1 x N2
