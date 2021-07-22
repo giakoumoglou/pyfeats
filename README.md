@@ -35,16 +35,16 @@ A collection of python functions for feature extraction. The features are calcul
 5. Wavelet Packets (WP)
 6. Gabor Transform (GT)
 
-### Single-point Features
-1. GSM
-2. Stratified GSM
-3. JBA
-
 ### Other Features
 1. Zernikes’ Moments
 2. Hu’s Moments
 3. Threshold Adjacency Matrix (TAS)
 4. Histogram of Oriented Gradients (HOG)
+
+### Single-point Features
+1. GSM
+2. Stratified GSM
+3. JBA
 
 ## Use
 Download the folder Features, add to path and call
