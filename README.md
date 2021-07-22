@@ -1,17 +1,17 @@
 # Image Feature Extraction in ROI (Python)
 A collection of python functions for feature extraction. The features are calculated inside a Region of Interest (ROI) and not for the whole image: the image is actually a polygon! More and more features will be added. Please feel free to point out any mistakes or improvemets. The aim is to create a library for image feature extraction. Message me for more details.
 
-## A. Single point based statistical plaque features
-### A.1  Single/Multi ROI
+### Single-point Features
 1. GSM
 2. Stratified GSM
 3. JBA
-### A.2 Histogram based features
+
+### Histogram based features
 1. Histogram
 2. Multi-region histogram
 3. Correlogram
-## B. Spatial based plaque features
-### B.1 Early texture
+
+### Textural Features
 1. First Order Statistics/Statistical Features (FOS/SF)
 2. Gray Level Co-occurence Matrix (GLCM/SGLDM)
 3. Gray Level Difference Statistics (GLDS)
@@ -22,21 +22,23 @@ A collection of python functions for feature extraction. The features are calcul
 8. Gray Level Run Length Matrix (GLRLM)
 9. Fourier Power Spectrum (FPS)
 10. Shape Parameters
-### B.2 Later texture
-1. Gray Level Size Zone Matrix (GLSZM)
-2. Higher Order Spectra (HOS)
-3. Local Binary Pattern (LPB)
-### B.3 Morphological
+11. Gray Level Size Zone Matrix (GLSZM)
+12. Higher Order Spectra (HOS)
+13. Local Binary Pattern (LPB)
+
+### Morphological Features
 1. Grayscale Morphological Analysis
 2. Multilevel Binary Morphological Analysis
-### B.4 Multi-scale
+
+### Multi-scale Features
 1. Fractal Dimension Texture Analysis (FDTA)
 2. Amplitude Modulation – Frequency Modulation (AM-FM)
 3. Discrete Wavelet Transform (DWT)
 4. Stationary Wavelet Transform (SWT)
 5. Wavelet Packets (WP)
 6. Gabor Transform (GT)
-### B.5 Other
+
+### Other Features
 1. Zernikes’ Moments
 2. Hu’s Moments
 3. Threshold Adjacency Matrix (TAS)

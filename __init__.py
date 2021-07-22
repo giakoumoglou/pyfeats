@@ -1,10 +1,9 @@
-from .SinglePointBasedFeatures.SingleMultiROI import *
-from .SinglePointBasedFeatures.HistogramBasedFeatures import *
-from .SpatialBasedFeatures.EarlyTexture import *
-from .SpatialBasedFeatures.LaterTexture import *
-from .SpatialBasedFeatures.Morphological import *
-from .SpatialBasedFeatures.MultiScale import *
-from .SpatialBasedFeatures.Other import *
+from .single import *
+from .histogram import *
+from .texture import *
+from .morphological import *
+from .multiscale import *
+from .other import *
 
 
 __all__ = ['histogram', 'plot_histogram',
