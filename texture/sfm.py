@@ -46,7 +46,7 @@ def con_cov_dss(f, mask, Lr, Lc, Ng=256):
             mask_common = np.multiply(mask,mask_d)
                 
             n = sum(sum(mask_common))
-            f_mean = sum(sum(np.multiply(f,mask_common)))/n;
+            f_mean = sum(sum(np.multiply(f,mask_common)))/n
                 
             # Compute CON, COV, DSS
             CON[row,col] = sum(sum(np.multiply((f-f_d),mask_common)**2))/n
