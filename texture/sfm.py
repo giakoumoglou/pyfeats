@@ -22,7 +22,7 @@ def con_cov_dss(f, mask, Lr, Lc, Ng=256):
     
     N1, N2 = f.shape
     CON = np.zeros((Lr+1,2*Lc+1),np.double) # delta contrast
-    COV = np.zeros((Lr+1,2*Lc+1),np.double) # deltra covariance
+    COV = np.zeros((Lr+1,2*Lc+1),np.double) # delta covariance
     DSS = np.zeros((Lr+1,2*Lc+1),np.double) # delta dissimilarity
         
     for drow in range(Lr+1):
