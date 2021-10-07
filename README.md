@@ -22,7 +22,7 @@ A collection of python functions for feature extraction. The features are calcul
 1. Grayscale Morphological Analysis
 2. Multilevel Binary Morphological Analysis
 
-### C. Histogram based features
+### C. Histogram Based Features
 1. Histogram
 2. Multi-region histogram
 3. Correlogram
@@ -40,11 +40,6 @@ A collection of python functions for feature extraction. The features are calcul
 2. Hu’s Moments
 3. Threshold Adjacency Matrix (TAS)
 4. Histogram of Oriented Gradients (HOG)
-
-### F. Single-point Features
-1. GSM
-2. Stratified GSM
-3. JBA
 
 ## Use
 Download the folder features, add to path and call
