@@ -1,9 +1,8 @@
 from .histogram import *
-from .texture import *
+from .textural import *
 from .morphological import *
 from .multiscale import *
 from .other import *
-
 
 __all__ = ['histogram', 'plot_histogram',
            'multiregion_histogram',
