@@ -1,4 +1,8 @@
-from .features import *
+from .histogram import *
+from .textural import *
+from .morphological import *
+from .multiscale import *
+from .other import *
 
 __all__ = ['histogram', 'plot_histogram',
            'multiregion_histogram',
@@ -28,3 +32,4 @@ __all__ = ['histogram', 'plot_histogram',
            'hu_moments',
            'tas_features',
            'zernikes_moments']
+
