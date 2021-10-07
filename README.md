@@ -41,11 +41,6 @@ A collection of python functions for feature extraction. The features are calcul
 3. Threshold Adjacency Matrix (TAS)
 4. Histogram of Oriented Gradients (HOG)
 
-### F. Single-point Features
-1. GSM
-2. Stratified GSM
-3. JBA
-
 ## Use
 Download the folder Features, add to path and call
 ```python
