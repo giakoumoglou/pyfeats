@@ -1,4 +1,3 @@
-from .single import *
 from .histogram import *
 from .texture import *
 from .morphological import *
@@ -9,9 +8,6 @@ from .other import *
 __all__ = ['histogram', 'plot_histogram',
            'multiregion_histogram',
            'correlogram', 'plot_correlogram',
-           'gsm_feature',
-           'stratified_gsm_features',
-           'jba_feature',
            'fos',
            'glcm_features',
            'glds_features',
