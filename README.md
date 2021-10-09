@@ -1,5 +1,6 @@
 # Image Feature Extraction in ROI (Python)
 A collection of python functions for feature extraction. The features are calculated inside a Region of Interest (ROI) and not for the whole image: the image is actually a polygon! More and more features will be added. Please feel free to point out any mistakes or improvemets. The aim is to create a library for image feature extraction. Message me for more details.
+This package was part of my thesis which was about classification of plaques extracted from ultrasound images. The example provided in the demo folder originates from it.
 
 ## Features
 
