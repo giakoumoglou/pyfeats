@@ -14,7 +14,7 @@ def padImage(im, pad=2, value=0):
     return out
 
 # Load image
-path = os.getcwd() + '/data/'
+path = os.getcwd() + '/demo/data/'
 image_name ='ultrasound.bmp'
 image = cv2.imread(path + image_name, cv2.IMREAD_GRAYSCALE)
 
