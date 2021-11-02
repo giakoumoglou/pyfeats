@@ -50,7 +50,7 @@ from features import *
 
 ## 3. How to use each feature set
 ### 3.1 Textural Features
-1. First Order Statistics/Statistical Features (FOS/SF)
+#### 3.1.1 First Order Statistics/Statistical Features (FOS/SF)
 ```python
 features, labels = fos(f, mask)
     '''
@@ -70,7 +70,7 @@ features, labels = fos(f, mask)
         Labels of features.
     '''
 ```
-2. Gray Level Co-occurence Matrix (GLCM/SGLDM)
+#### 3.1.2 Gray Level Co-occurence Matrix (GLCM/SGLDM)
 ```python
 features_mean, features_range, labels_mean, labels_range = glcm_features(f, ignore_zeros)
     '''
@@ -93,7 +93,7 @@ features_mean, features_range, labels_mean, labels_range = glcm_features(f, igno
         Labels of features_range.
     '''
 ```
-3. Gray Level Difference Statistics (GLDS)
+#### 3.1.3 Gray Level Difference Statistics (GLDS)
 ```python
 features, labels = glds_features(f, mask, Dx, Dy)
     '''
@@ -118,7 +118,7 @@ features, labels = glds_features(f, mask, Dx, Dy)
         Labels of features.
     '''
 ```
-4. Neighborhood Gray Tone Difference Matrix (NGTDM)
+#### 3.1.4 Neighborhood Gray Tone Difference Matrix (NGTDM)
 ```python
 features, labels = ngtdm_features(f, mask, d)
     '''  
@@ -140,7 +140,7 @@ features, labels = ngtdm_features(f, mask, d)
         Labels of features.
     '''
 ```
-5. Statistical Feature Matrix (SFM)
+#### 3.1.5 Statistical Feature Matrix (SFM)
 ```python
 features, labels = sfm_features(f, mask, Lr, Lc)
     '''  
@@ -164,7 +164,7 @@ features, labels = sfm_features(f, mask, Lr, Lc)
         Labels of features.
     '''
 ```
-6. Law's Texture Energy Measures (LTE/TEM)
+#### 3.1.6 Law's Texture Energy Measures (LTE/TEM)
 ```python
 features, labels = lte_measures(f, mask, l)
     '''
@@ -186,7 +186,7 @@ features, labels = lte_measures(f, mask, l)
         Labels of features.
     '''
 ```
-7. Fractal Dimension Texture Analysis (FDTA)
+#### 3.1.7 Fractal Dimension Texture Analysis (FDTA)
 ```python
 h, labels = fdta(f, mask, s)
     '''
@@ -208,7 +208,7 @@ h, labels = fdta(f, mask, s)
         Labels of h.
     '''
 ```
-8. Gray Level Run Length Matrix (GLRLM)
+#### 3.1.8 Gray Level Run Length Matrix (GLRLM)
 ```python
 features, labels = glrlm_features(f, mask, Ng)
     '''
@@ -230,7 +230,7 @@ features, labels = glrlm_features(f, mask, Ng)
         Labels of features.
     '''
 ```
-9. Fourier Power Spectrum (FPS)
+#### 3.1.9 Fourier Power Spectrum (FPS)
 ```python
 features, labels = fps(f, mask)
     '''
@@ -250,7 +250,7 @@ features, labels = fps(f, mask)
         Labels of features.
     '''
 ```
-10. Shape Parameters
+#### 3.1.10 Shape Parameters
 ```python
 features, labels = shape_parameters(f, mask, perimeter, pixels_per_mm2)
     ''' 
@@ -274,7 +274,7 @@ features, labels = shape_parameters(f, mask, perimeter, pixels_per_mm2)
         Labels of features.
     '''
 ```
-11. Gray Level Size Zone Matrix (GLSZM)
+#### 3.1.11 Gray Level Size Zone Matrix (GLSZM)
 ```python
 features, labels = glszm_features(f, mask)
     '''
@@ -293,7 +293,7 @@ features, labels = glszm_features(f, mask)
         Labels of features.
     '''
 ```
-12. Higher Order Spectra (HOS)
+#### 3.1.12 Higher Order Spectra (HOS)
 ```python
 features, labels = hos_features(f, th)
     '''
@@ -312,7 +312,7 @@ features, labels = hos_features(f, th)
         Labels of features.
     '''
 ```
-13. Local Binary Pattern (LPB)
+#### 3.1.13 Local Binary Pattern (LPB)
 ```python
 features, labels = lbp_features(f, mask, P, R)
     '''
@@ -338,7 +338,7 @@ features, labels = lbp_features(f, mask, P, R)
 ```
 
 ### 3.2 Morphological Features
-1. Gray-scale Morphological Analysis
+#### 3.2.1 Gray-scale Morphological Analysis
 ```python
 pdf, cdf = grayscale_morphology_features(f, N)
     ''' 
@@ -357,7 +357,7 @@ pdf, cdf = grayscale_morphology_features(f, N)
         Cumulative density function (cdf) of pattern spectrum.
     '''
 ```
-2. Multilevel Binary Morphological Analysis
+#### 3.2.2 Multilevel Binary Morphological Analysis
 ```python
 pdf_L, pdf_M, pdf_H, cdf_L, cdf_M, cdf_H = multilevel_binary_morphology_features(img, mask, N, thresholds):
     ''' 
@@ -391,7 +391,7 @@ pdf_L, pdf_M, pdf_H, cdf_L, cdf_M, cdf_H = multilevel_binary_morphology_features
 ```
 
 ### 3.3 Histogram Based Features
-1. Histogram
+#### 3.3.1 Histogram
 ```python
 H, labels = histogram(f, mask, bins)
     ''' 
@@ -414,7 +414,7 @@ H, labels = histogram(f, mask, bins)
         Labels of features, which are the bins' number.
     '''
 ```
-2. Multi-region histogram
+#### 3.3.2 Multi-region histogram
 ```python
 features, labels = multiregion_histogram(f, mask, bins, num_eros, square_size)
     ''' 
@@ -441,7 +441,7 @@ features, labels = multiregion_histogram(f, mask, bins, num_eros, square_size)
         Labels of features.
     '''
 ```
-3. Correlogram
+#### 3.3.3 Correlogram
 ```python
 Hd, Ht, labels = correlogram(f, mask, bins_digitize, bins_hist, flatten)
     ''' 
@@ -472,7 +472,7 @@ Hd, Ht, labels = correlogram(f, mask, bins_digitize, bins_hist, flatten)
 ```
 
 ### 3.4 Multi-scale Features
-1. Fractal Dimension Texture Analysis (FDTA)
+#### 3.4.1 Fractal Dimension Texture Analysis (FDTA)
 ```python
 h, labels = fdta(f, mask, s)
     '''
@@ -494,7 +494,7 @@ h, labels = fdta(f, mask, s)
         Labels of h.
     '''
 ```
-2. Amplitude Modulation – Frequency Modulation (AM-FM)
+#### 3.4.2 Amplitude Modulation – Frequency Modulation (AM-FM)
 ```python
 features, labels = amfm_features(f, bins)
     '''
@@ -513,7 +513,7 @@ features, labels = amfm_features(f, bins)
         Labels of features.
     '''
 ```
-3. Discrete Wavelet Transform (DWT)
+#### 3.4.3 Discrete Wavelet Transform (DWT)
 ```python
 features, labels = dwt_features(f, mask, wavelet, levels)
     ''' 
@@ -537,7 +537,7 @@ features, labels = dwt_features(f, mask, wavelet, levels)
         Labels of features.
     '''
 ```
-4. Stationary Wavelet Transform (SWT)
+#### 3.4.4 Stationary Wavelet Transform (SWT)
 ```python
 features, labels = swt_features(f, mask, wavelet, levels)
     ''' 
@@ -561,7 +561,7 @@ features, labels = swt_features(f, mask, wavelet, levels)
         Labels of features.
     '''
 ```
-5. Wavelet Packets (WP)
+#### 3.4.5 Wavelet Packets (WP)
 ```python
 features, labels = wp_features(f, mask, wavelet, maxlevel) 
     ''' 
@@ -585,7 +585,7 @@ features, labels = wp_features(f, mask, wavelet, maxlevel)
         Labels of features.
     '''
 ```
-6. Gabor Transform (GT)
+#### 3.4.6 Gabor Transform (GT)
 ```python
 features, labels = gt_features(f, mask, deg, freq)
     ''' 
@@ -612,7 +612,7 @@ features, labels = gt_features(f, mask, deg, freq)
 ```
 
 ### 3.5 Other Features
-1. Zernikes’ Moments
+#### 3.5.1 Zernikes’ Moments
 ```python
 features, labels = zernikes_moments(f, radius)
     '''
@@ -631,7 +631,7 @@ features, labels = zernikes_moments(f, radius)
         Labels of features.
     '''
 ```
-2. Hu’s Moments
+#### 3.5.2 Hu’s Moments
 ```python
 features, labels = hu_moments(f)
     '''
@@ -648,7 +648,7 @@ features, labels = hu_moments(f)
         Labels of features.
     '''
 ```
-3. Threshold Adjacency Matrix (TAS)
+#### 3.5.3 Threshold Adjacency Matrix (TAS)
 ```python
 features, labels = tas_features(f)
     '''
@@ -665,7 +665,7 @@ features, labels = tas_features(f)
         Labels of features.
     '''  
 ```
-4. Histogram of Oriented Gradients (HOG)
+#### 3.5.4 Histogram of Oriented Gradients (HOG)
 ```python
 fd, labels = hog_features(f, ppc, cpb)
     '''
