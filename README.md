@@ -52,12 +52,14 @@ from features import *
 For the following sections, assume _f_ is a grayscale image as a numpy ndarray, _mask_ is also an image as a numpy ndarray but with 2 values: 0 and 1. 1 indicates the ROI, where the features shall be calculated (values outside ROI are ignored) and _perimeter_ like mask but indicated the perimeter of the ROI. The demo has an analytic way on how to create _mask_ and _perimeter_, given a set of coordinates.  
 
 <p align="center">
-  <img width="375" height="130" src="https://github.com/giakou4/features/blob/main/demo/data/f.png" alt="f">
+  <img width="375" height="130" src="https://github.com/giakou4/features/blob/main/demo/data/f.png">
 </p>
-
-![f](https://github.com/giakou4/features/blob/main/demo/data/f.png?raw=true "f")  
-![mask](https://github.com/giakou4/features/blob/main/demo/data/mask.png?raw=true "mask")  
-![perimeter](https://github.com/giakou4/features/blob/main/demo/data/perimeter.png?raw=true "perimeter") 
+<p align="center">
+  <img width="375" height="130" src="https://github.com/giakou4/features/blob/main/demo/data/mask.png">
+</p>
+<p align="center">
+  <img width="375" height="130" src="https://github.com/giakou4/features/blob/main/demo/data/perimeter.png">
+</p>
 
 ### 3.1 Textural Features
 #### 3.1.1 First Order Statistics/Statistical Features (FOS/SF)
