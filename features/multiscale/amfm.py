@@ -9,24 +9,13 @@
             Murray, Multiscale AMFM Demodulation and Image Reconstruction methods with Improved Accuracy 
             Pattichis, Medical Image Analysis Using AM-FM Models and Methods
 ==============================================================================
-Amplitude Modulation - Frequency Modulation (AM-FM) using Gabor Filerbank
-==============================================================================
-Inputs:
-    - f:        image of dimensions N1 x N2
-    - mask:     int boolean image N1 x N2 with 1 if pixels belongs to ROI, 
-                0 else
-Outputs:
-    - features: histogram of IA, IP, IFx, IFy with 32 bins fixed, a feature
-                vector of 128
-==============================================================================
 """
 
 import numpy as np
 from  scipy import signal
 import warnings
 
-def _gabor_kernel_2D(theta, lamda, gamma, bandwidth, phase, 
-                  overlapIndex):
+def _gabor_kernel_2D(theta, lamda, gamma, bandwidth, phase, overlapIndex):
     qFactor = (1/np.pi) * np.sqrt( (np.log(overlapIndex)/2) ) *  \
                     ( (2**bandwidth + 1) / (2**bandwidth - 1) )
     sigma = lamda*qFactor
@@ -51,6 +40,13 @@ def _gaussian_function(f0, s0, overlapIndex):
     return res
  
 def _filterbank():
+    '''
+    Returns
+    -------
+    filter : list
+        List of 41 filters for AM-FM multi-scale analysis.
+    '''
+    
     lamda0 = 2
     orientations = 8
     scales = 5
@@ -77,10 +73,24 @@ def _filterbank():
     return filters
 
 def _calculate_amfm(f):
+    '''
+    Parameters
+    ----------
+    f : numpy ndarray
+        Image of dimensions N1 x N2.
+
+    Returns
+    -------
+    IA : numpy ndarray
+        instantaneous amplitude (a_n).
+    IP : numpy ndarray
+        instanteneous phase (φ_n).
+    IFx : numpy ndarray
+        instantanteous frequency (grad φ1_n).
+    IFy : numpy ndarray
+        instantanteous frequency (grad φ2_n).
+    '''
     N1, N2 = f.shape
-    # IA = instantaneous amplitude (a_n)
-    # IP = instanteneous phase (φ_n)
-    # IF = instantanteous frequency (grad φ_n = [grad φ1_n, grad φ2_n])
     IA = np.abs(f)
     IP = np.angle(f)
     IANorm = np.divide(f, IA+1e-16)
@@ -88,13 +98,29 @@ def _calculate_amfm(f):
     IFy = np.zeros((N1,N2), np.double)
     for i in range(1,N1-1):
         for j in range(1,N2-1):
-            IFx[i,j] = np.abs(np.arccos(np.real(
-                (IANorm[i+1,j]+IANorm[i-1,j]) / (2*IANorm[i,j]) )))
-            IFy[i,j] = np.abs(np.arccos(np.real(
-                (IANorm[i,j+1]+IANorm[i,j-1]) / (2*IANorm[i,j]) )))
+            IFx[i,j] = np.abs(np.arccos(np.real((IANorm[i+1,j]+IANorm[i-1,j]) / (2*IANorm[i,j]))))
+            IFy[i,j] = np.abs(np.arccos(np.real((IANorm[i,j+1]+IANorm[i,j-1]) / (2*IANorm[i,j]))))
     return IA, IP, IFx, IFy
 
 def _dca(band):
+    '''
+    Parameters
+    ----------
+    band : list
+        The band. A list of IA, IP, IFx, IFy.
+
+    Returns
+    -------
+    IA : list
+        Max instantaneous amplitude for given band.
+    IP : list
+        Max instanteneous phase for given band.
+    IFx : list
+        Max instantanteous frequency for given band.
+    IFy : list
+        Max instantanteous frequency for given band.
+    '''
+    
     IA = np.zeros(band[0][0].shape)
     IP = np.zeros(band[0][1].shape)
     IFx = np.zeros(band[0][2].shape)
@@ -116,7 +142,23 @@ def _dca(band):
     
     return IA, IP, IFx, IFy
     
-def amfm_features(f):
+def amfm_features(f, bins=32):
+    '''
+    Parameters
+    ----------
+    f : numpy ndarray
+        Image of dimensions N1 x N2.
+    bins: int, optional
+        Bins for the calculated histogram. The default is 32.
+
+    Returns
+    -------
+    features : numpy ndarray
+        Histogram of IA, IP, IFx, IFy as a concatenated vector.
+    labels : list
+        Labels of features.
+    '''
+    
 
     warnings.simplefilter(action='ignore', category=RuntimeWarning)
     AMFM = []
@@ -132,8 +174,7 @@ def amfm_features(f):
     #    mask_conv.append(temp)
         
     for i, filtre in enumerate(filters):
-        f_filtered = signal.convolve2d(f_hilbert, np.rot90(filtre), mode='same', 
-                                      boundary='fill', fillvalue=0)
+        f_filtered = signal.convolve2d(f_hilbert, np.rot90(filtre), mode='same', boundary='fill', fillvalue=0)
         #f_filtered = f_filtered * mask_conv[i]
         IA, IP, IFx, IFy = _calculate_amfm(f_filtered)
         IA = np.nan_to_num(IA)
@@ -161,21 +202,21 @@ def amfm_features(f):
     IAl, IPl, IFxl, IFyl = _dca(low)
     IAl = (IAl > np.percentile(IAl,50)).astype(np.float64) * IAl
     reconstructionImgDCAl = np.real(IAl * np.cos(IPl))
-    H1 = np.histogram(reconstructionImgDCAl, bins=32, density=True)[0]
+    H1 = np.histogram(reconstructionImgDCAl, bins=bins, density=True)[0]
     
     IAm, IPm, IFxm, IFym = _dca(med)
     IAm = (IAm > np.percentile(IAl,50)).astype(np.float64) * IAm
     reconstructionImgDCAm = np.real(IAm * np.cos(IPm))
-    H2 = np.histogram(reconstructionImgDCAm, bins=32, density=True)[0]
+    H2 = np.histogram(reconstructionImgDCAm, bins=bins, density=True)[0]
     
     IAh, IPh, IFxh, IFyh = _dca(high)
     IAh = (IAh > np.percentile(IAl,50)).astype(np.float64) * IAh
     reconstructionImgDCAh = np.real(IAh * np.cos(IPh))
-    H3 = np.histogram(reconstructionImgDCAh, bins=32, density=True)[0]
+    H3 = np.histogram(reconstructionImgDCAh, bins=bins, density=True)[0]
     
     IAdc, IPdc, IFxdc, IFydc = _dca(dc)
     reconstructionImgDCAdc = np.real(IAdc * np.cos(IPdc))
-    H4 = np.histogram(reconstructionImgDCAdc, bins=32, density=True)[0]
+    H4 = np.histogram(reconstructionImgDCAdc, bins=bins, density=True)[0]
     
     features = np.concatenate([H1, H2, H3, H4])
     labels = []

@@ -14,7 +14,7 @@ def padImage(im, pad=2, value=0):
     return out
 
 # Load image
-path = os.getcwd() + '/demo/data/'
+path = os.getcwd() + '/data/'
 image_name ='ultrasound.bmp'
 image = cv2.imread(path + image_name, cv2.IMREAD_GRAYSCALE)
 
@@ -75,13 +75,13 @@ plot_sinogram(image, image_name)
 #%% B. Morphological features
 features['B_Morphological_Grayscale_pdf'], features['B_Morphological_Grayscale_cdf'] = grayscale_morphology_features(image, N=30)
 features['B_Morphological_Binary_L_pdf'], features['B_Morphological_Binary_M_pdf'], features['B_Morphological_Binary_H_pdf'], features['B_Morphological_Binary_L_cdf'], \
-features['B_Morphological_Binary_M_cdf'], features['B_Morphological_Binary_H_cdf'] = multilevel_binary_morphology_features(image, mask, N=30)
+features['B_Morphological_Binary_M_cdf'], features['B_Morphological_Binary_H_cdf'] = multilevel_binary_morphology_features(image, mask, N=30, thresholds=[25,50])
 
 plot_pdf_cdf(features['B_Morphological_Grayscale_pdf'], features['B_Morphological_Grayscale_cdf'], image_name)
 plot_pdfs_cdfs(features['B_Morphological_Binary_L_pdf'], features['B_Morphological_Binary_M_pdf'], features['B_Morphological_Binary_H_pdf'], features['B_Morphological_Binary_L_cdf'], features['B_Morphological_Binary_M_cdf'], features['B_Morphological_Binary_H_cdf'])
 
 #%% C. Histogram Based features
-features['C_Histogram'] = histogram(image, mask, 32)
+features['C_Histogram'] = histogram(image, mask, bins=32)
 features['C_MultiregionHistogram'] = multiregion_histogram(image, mask, bins=32, num_eros=3, square_size=3)
 features['C_Correlogram'] = correlogram(image, mask, bins_digitize=32, bins_hist=32, flatten=True)
 
@@ -96,7 +96,7 @@ features['D_GT'] = gt_features(image, mask)
 features['D_AMFM'] = amfm_features(image)
 
 #%% E. Other
-features['E_HOG'] = hog_features(image)
+features['E_HOG'] = hog_features(image, ppc=8, cpb=3)
 features['E_HuMoments'] = hu_moments(image)
 features['E_TAS'] = tas_features(image)
 features['E_ZernikesMoments'] = zernikes_moments(image, radius=9)

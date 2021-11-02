@@ -4,24 +4,33 @@
 @author: Nikolaos Giakoumoglou
 @date: Thu May  6 21:59:57 2021
 ==============================================================================
-First Order Statistics/Statistical Features
-==============================================================================
-Inputs:
-    - f:        image of dimensions N1 x N2
-    - mask:     int boolean image N1 x N2 with 1 if pixels belongs to ROI, 
-                0 else
-Outputs:
-    - features: 1)Mean, 2)Variance, 3)Median (50-Percentile), 4)Mode, 
-                5)Skewness, 6)Kurtosis, 7)Energy, 8)Entropy, 
-                9)Minimal Gray Level, 10)Maximal Gray Level, 
-                11)Coefficient of Variation, 12,13,14,15)10,25,75,90-
-                Percentile, 16)Histogram width
-==============================================================================
 """
 
 import numpy as np
 
 def fos(f, mask):
+    '''
+    Parameters
+    ----------
+    f : numpy ndarray
+        Image of dimensions N1 x N2.
+    mask : numpy ndarray
+        Mask image N1 x N2 with 1 if pixels belongs to ROI, 0 else. Give None
+        if you want to consider ROI the whole image.
+
+    Returns
+    -------
+    features : numpy ndarray
+        1)Mean, 2)Variance, 3)Median (50-Percentile), 4)Mode, 
+        5)Skewness, 6)Kurtosis, 7)Energy, 8)Entropy, 
+        9)Minimal Gray Level, 10)Maximal Gray Level, 
+        11)Coefficient of Variation, 12,13,14,15)10,25,75,90-
+        Percentile, 16)Histogram width
+    labels : list
+        Labels of features.
+    '''
+    if mask is None:
+        mask = np.ones(f.shape)
     
     # 1) Labels
     labels = ["FOS_Mean","FOS_Variance","FOS_Median","FOS_Mode","FOS_Skewness",

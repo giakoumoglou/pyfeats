@@ -6,22 +6,30 @@
 @date: Fri May  7 13:53:51 2021
 @reference: Amadasun, Texural Features Corresponding to Textural Properties
 ==============================================================================
-Neighborhood Gray Tone Difference Matrix
-==============================================================================
-Inputs:
-    - f:        image of dimensions N1 x N2
-    - mask:     int boolean image N1 x N2 with 1 if pixels belongs to ROI, 
-                0 else
-    - d:        distance of neighborhood
-Outputs:
-    - features: 1)Coarseness, 2)Contrast, 3)Busyness, 4)Complexity, 5)Strength
-==============================================================================
 """
 import numpy as np
 from scipy import signal
 from ..utilities import _image_xor
 
-def ngtdm(f, mask, d, Ng):
+def ngtdm(f, mask, d, Ng=256):
+    '''
+    Parameters
+    ----------
+    f : numpy ndarray
+        Image of dimensions N1 x N2.
+    mask : numpy ndarray
+        Mask image N1 x N2 with 1 if pixels belongs to ROI, 0 else.
+    d : int, optional
+        Distance for NGTDM. Default is 1.
+    Ng : int, optional
+        Image number of gray values. The default is 256.
+
+    Returns
+    -------
+    S : numpy ndarray
+    N : numpy ndarray
+    R : numpy ndarray
+    '''
     
     f = f.astype(np.double)
     N1, N2 = f.shape
@@ -56,7 +64,28 @@ def ngtdm(f, mask, d, Ng):
     return S, N, R
 
 def ngtdm_features(f, mask, d=1):
+    '''  
+    Parameters
+    ----------
+    f : numpy ndarray
+        Image of dimensions N1 x N2.
+    mask : numpy ndarray
+        Mask image N1 x N2 with 1 if pixels belongs to ROI, 0 else. Give None
+        if you want to consider ROI the whole image.
+    d : int, optional
+        Distance for NGTDM. Default is 1.
+
+    Returns
+    -------
+    features : numpy ndarray
+        1)Coarseness, 2)Contrast, 3)Busyness, 4)Complexity, 5)Strength.
+    labels : list
+        Labels of features.
+    '''
     
+    if mask is None:
+        mask = np.ones(f.shape)
+        
     # 1) Labels
     labels = ["NGTDM_Coarseness","NGTDM_Contrast","NGTDM_Busyness",
               "NGTDM_Complexity","NGTDM_Strngth"]

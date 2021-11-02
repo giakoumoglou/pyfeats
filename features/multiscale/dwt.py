@@ -7,25 +7,37 @@
             Acharya, Carotid Ultrasound Symptomatology using Atherosclerotic Plaque
             Tsiaparas, Comparison of Multiresolution Features for Texture Classification of Carotid Atherosclerosis From B-Mode Ultrasound
 ==============================================================================
-Discrete Wavelet Transform (DWT)
-==============================================================================
-Inputs:
-    - f:         image of dimensions N1 x N2
-    - mask:      int boolean image N1 x N2 with 1 if pixels belongs to ROI, 
-                 0 else
-    - wavelet:   family of filter for DWT (default='bior3.3')
-    - level:     level for DWT decomposition (default=3)
-Outputs:
-    - features:  mean and std of each cD, cH, cV [9 x 2 = 18]
-==============================================================================
 """
 
 import pywt
 import numpy as np
 from ..utilities import _pad_image_power_2
 
-def dwt_features(f, mask, wavelet='bior3.3',levels=3):
+def dwt_features(f, mask, wavelet='bior3.3', levels=3):
+    ''' 
+    Parameters
+    ----------
+    f : numpy ndarray
+        Image of dimensions N1 x N2.
+    mask : numpy ndarray
+        Mask image N1 x N2 with 1 if pixels belongs to ROI, 0 else. Give None
+        if you want to consider ROI the whole image.
+    wavelet : str, optional
+         Filter to be used. Check pywt for filter families. The default is 'bior3.3'
+    levels : int, optional
+        Levels of decomposition. Default is 3.
+
+    Returns
+    -------
+    features : numpy ndarray
+        Mean and std of each detail image. Appromimation images are ignored.
+    labels : list
+        Labels of features.
+    '''
     
+    if mask is None:
+        mask = np.ones(f.shape)
+        
     # Step 1: Pad Image
     f = _pad_image_power_2(f)       # pad to the next power of 2 in each dimension
     mask = _pad_image_power_2(mask) # pad to the next power of 2 in each dimension

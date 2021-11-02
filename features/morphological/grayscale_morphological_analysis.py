@@ -6,14 +6,6 @@
 @reference: Maragos, Pattern Spectrum and Multiscale Shape Representation
             Maragos, Threshold Superposition in Morphological Image Analysis Systems
 ==============================================================================
-Grayscale Mophological Analysis
-==============================================================================
-Inputs:
-    - img:      image of dimensions N1 x N2
-    - N:        scale
-Outputs:
-    - features: pdf, cdf [N x 1]
-==============================================================================
 """
 
 import numpy as np
@@ -21,6 +13,22 @@ import matplotlib.pyplot as plt
 from skimage import morphology
 
 def _opening_FP(f, g, n): # (f o ng), n=0,1,2... 
+    ''' 
+    Parameters
+    ----------
+    f : numpy ndarray
+        Image of dimensions N1 x N2.
+    g : numpy ndarray
+        Structural element/pattern/kernel
+    n : np.array
+        Number of scales.
+
+    Returns
+    -------
+    out : numpy ndarray
+        Multiscale function-processing opening (f o ng) at scale n.
+    '''
+    
     out = f.copy()
     for i in range(n):
         out = morphology.erosion(out, g)
@@ -28,11 +36,41 @@ def _opening_FP(f, g, n): # (f o ng), n=0,1,2...
         out = morphology.dilation(out,g)
     return out 
 
-def _pattern_spectrum(f, g, n): # PS(f,g,n) = A[f o ng - f o (n+1)g] 
+def _pattern_spectrum(f, g, n):
+    ''' 
+    Parameters
+    ----------
+    f : numpy ndarray
+        Image of dimensions N1 x N2.
+    g : numpy ndarray
+        Structural element/pattern/kernel
+    n : np.array
+        Number of scales.
+
+    Returns
+    -------
+    out : numpy ndarray
+        Pattern spectrum PS(f,g,n) = A[f o ng - f o (n+1)g] 
+    '''
     ps = _opening_FP(f,g,n) - _opening_FP(f,g,(n+1))
     return ps.sum() 
 
-def grayscale_morphology_features(f,N):
+def grayscale_morphology_features(f, N=30):
+    ''' 
+    Parameters
+    ----------
+    f : numpy ndarray
+        Image of dimensions N1 x N2.
+    N : np.array, optional
+        Maximum number of scales. The default is 30.
+
+    Returns
+    -------
+    pdf : numpy ndarray
+        Probability density function (pdf) of pattern spectrum.
+    cdf : numpy ndarray
+        Cumulative density function (cdf) of pattern spectrum.
+    '''
     f = f.astype(np.uint8)                # grayscale image
     kernel = np.ones((3,3), np.uint8)     # kerne: cross '+'
     kernel[0,0], kernel[2,2], kernel[0,2], kernel[2,0] = 0, 0, 0, 0 

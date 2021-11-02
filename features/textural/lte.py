@@ -7,20 +7,6 @@
             Law, Rapid Texture Identification
             Haralick, Computer and Robot Vision Vol. 1
 ==============================================================================
-Law's Texture Energy Measures
-==============================================================================
-Inputs:
-    - f:        image of dimensions N1 x N2
-    - mask:     int boolean image N1 x N2 with 1 if pixels belongs to ROI, 
-                0 else
-    - l:        dimension of Law's mask
-Outputs:
-    - features: 1)texture energy from LL kernel, 2) texture energy from EE 
-                kernel, 3)texture energy from SS kernel, 4)average texture 
-                energy from LE and EL kernels, 5)average texture energy from 
-                ES and SE kernels, 6)average texture energy from LS and SL 
-                kernels
-==============================================================================
 """
 
 import numpy as np
@@ -28,7 +14,32 @@ from scipy import signal
 from ..utilities import _image_xor
 
 def lte_measures(f, mask, l=7):
+    '''
+    Parameters
+    ----------
+    f : numpy ndarray
+        Image of dimensions N1 x N2.
+    mask : numpy ndarray
+        Mask image N1 x N2 with 1 if pixels belongs to ROI, 0 else. Give None
+        if you want to consider ROI the whole image.
+    l : int, optional
+        Law's mask size. The default is 7.
 
+    Returns
+    -------
+    features : numpy ndarray
+        1)texture energy from LL kernel, 2) texture energy from EE 
+        kernel, 3)texture energy from SS kernel, 4)average texture 
+        energy from LE and EL kernels, 5)average texture energy from 
+        ES and SE kernels, 6)average texture energy from LS and SL 
+        kernels.
+    labels : list
+        Labels of features.
+    '''
+
+    if mask is None:
+        mask = np.ones(f.shape)
+        
     # 1) Labels
     labels = ["LTE_LL","LTE_EE","LTE_SS","LTE_LE","LTE_ES","LTE_LS"]
     labels = [label+'_'+str(l) for label in labels]

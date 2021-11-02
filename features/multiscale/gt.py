@@ -5,15 +5,6 @@
 @date: Mon Thu May 13 13:14:35 2021
 @reference: Tsiaparas, Comparison of Multiresolution Features for Texture Classification of Carotid Atherosclerosis From B-Mode Ultrasound
 ==============================================================================
-Gabor Transform (GT)
-==============================================================================
-Inputs:
-    - f:        image of dimensions N1 x N2
-    - mask:     int boolean image N1 x N2 with 1 if pixels belongs to ROI, 
-                0 else
-Outputs:
-    - features:  mean and std [8 x 2 = 16] for fixed frquency and theta
-==============================================================================
 """
 
 import numpy as np
@@ -21,14 +12,38 @@ from skimage.filters import gabor_kernel
 from scipy import signal
 from ..utilities import _image_xor
 
-def gt_features(f, mask):
+def gt_features(f, mask, deg=4, freq=[0.05, 0.4]):
+    ''' 
+    Parameters
+    ----------
+    f : numpy ndarray
+        Image of dimensions N1 x N2.
+    mask : numpy ndarray
+        Mask image N1 x N2 with 1 if pixels belongs to ROI, 0 else. Give None
+        if you want to consider ROI the whole image.
+    deg: int, optinal
+        Quantized degrees. The default is 4 (0, 45, 90, 135 degrees)
+    freq: list, optional
+        frequency of the gabor kernel. The default is [0.05, 0.4]
+
+    Returns
+    -------
+    features : numpy ndarray
+        Mean and std for the resulted image: (f o gabor_filter)(x,y)
+        
+    labels : list
+        Labels of features.
+    '''    
     
+    if mask is None:
+        mask = np.ones(f.shape)
+        
     # Step 1: Initialize kernels
     kernels = []
     labels = []
-    for theta in range(4): # th = 0, 45, 90, 135 degrees
-        theta = theta / 4. * np.pi
-        for frequency in (0.05, 0.4): # f = 0.05 and 0.4
+    for theta in range(deg): # e.g. th = 0, 45, 90, 135 degrees
+        theta = theta / deg * np.pi
+        for frequency in freq: # e.g. f = 0.05 and 0.4
             kernel = np.real(gabor_kernel(frequency, theta=theta))
             kernels.append(kernel)
             labels.append('GT_th_' + str(theta*4/np.pi) + '_freq_' + 

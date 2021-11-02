@@ -4,27 +4,40 @@
 @author: Nikolaos Giakoumoglou
 @date: Fri May 14 10:33:48 2021
 ==============================================================================
-Correlogram
-==============================================================================
-Inputs:
-    - f:              image of dimensions N1 x N2
-    - mask:           int boolean image N1 x N2 with 1 if pixels belongs to  
-                      ROI, 0 else 
-    - bins_digitize:  number of bins for discrete distances and thetas
-                      (default=32)
-    - bins_hist:      number of bins for histogram (default=32)
-    - flatten:        return correlogram as 1d array if True or 2d array if
-                      False (default=False)
-Outputs:
-    - features:      [bins_digitize x bins_hist] feature vector for distance 
-                     and a same one for theta e.g. [32 x 32]
-==============================================================================
 """
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.spatial import distance
 
 def correlogram(f, mask, bins_digitize = 32, bins_hist = 32, flatten=False):
+    ''' 
+    Parameters
+    ----------
+    f : numpy ndarray
+        Image of dimensions N1 x N2.
+    mask : numpy ndarray
+        Mask image N1 x N2 with 1 if pixels belongs to ROI, 0 else. Give None
+        if you want to consider ROI the whole image.
+    bins_digitize : int, optional
+         Number of bins for discrete distances and thetas. The default is 32.
+    bins_hist : int, optional
+        Number of bins for histogram. The default is 32.
+    flatten : bool, optional
+        Return correlogram as 1d array if True or 2d array if False. The 
+        default is False.
+
+    Returns
+    -------
+    Hd : numpy ndarray
+        Correlogram for distance.
+    Ht : numpy ndarray
+        Correlogram for angles.
+    labels : list
+        Labels of features.
+    '''
+    
+    if mask is None:
+        mask = np.ones(f.shape) 
     
     Ng = 256
     

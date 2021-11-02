@@ -3,24 +3,38 @@
 ==============================================================================
 @author: Nikolaos Giakoumoglou
 @date: Thu May 13 12:14:15 2021
-@reference: siaparas, Comparison of Multiresolution Features for Texture Classification of Carotid Atherosclerosis From B-Mode Ultrasound
-==============================================================================
-Wavelet Packets (WP)
-==============================================================================
-Inputs:
-    - f:         image of dimensions N1 x N2
-    - wavelet:   family of filter for DWT (default='coif1')
-    - maxlevel:  levels for wavelet decomposition (default=3)
-Outputs:
-    - features: mean and std [63 x 2 = 126]
+@reference: Tsiaparas, Comparison of Multiresolution Features for Texture Classification of Carotid Atherosclerosis From B-Mode Ultrasound
 ==============================================================================
 """
 
 import pywt
 import numpy as np
 
-def wp_features(f, mask, wavelet='coif1', maxlevel=3):
+def wp_features(f, mask, wavelet='coif1', maxlevel=3): 
+    ''' 
+    Parameters
+    ----------
+    f : numpy ndarray
+        Image of dimensions N1 x N2.
+    mask : numpy ndarray
+        Mask image N1 x N2 with 1 if pixels belongs to ROI, 0 else. Give None
+        if you want to consider ROI the whole image.
+    wavelet : str, optional
+         Filter to be used. Check pywt for filter families. The default is 'cof1'
+    maxlevel : int, optional
+        Levels of decomposition. Default is 3.
 
+    Returns
+    -------
+    features : numpy ndarray
+        Mean and std of each detail image. Appromimation images are ignored.
+    labels : list
+        Labels of features.
+    '''
+    
+    if mask is None:
+        mask = np.ones(f.shape)
+        
     # Step 1: Get Wavelet Decomposition in 3 levels 
     wp = pywt.WaveletPacket2D(data=f, wavelet=wavelet, mode='symmetric')
     wp_mask = pywt.WaveletPacket2D(data=mask, wavelet=wavelet, mode='symmetric')

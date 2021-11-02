@@ -5,23 +5,21 @@
 @date: Sat May  8 09:42:10 2021
 @reference: Wu, Texture Features for Classification
 ==============================================================================
-Fractal Dimension Texture Analysis
-==============================================================================
-Inputs:
-    - f:        image of dimensions N1 x N2
-    - s:        degree to calculate Hurst coefficients
-Outputs:
-    - features: Hurst Coefficients
-==============================================================================
 """
 import numpy as np
 
-# Estimation of the curve slope using least squares regression, in log-log scale
+
 def _least(id, k):
+    '''
+    Estimation of the curve slope using least squares regression, in log-log scale
+    '''
     return np.polyfit(np.log10(np.arange(1,k+1)), np.log10(id), deg=1)[0]
 
-# Intensity difference vector with step 
+
 def _intensity(f, mask, s):
+    '''
+    Intensity difference vector with step 
+    '''
     n1, n2, cn1, cn2 = 0, 0, 0, 0
     N1, N2 = f.shape
     IDV = np.zeros((s), np.double)
@@ -38,12 +36,15 @@ def _intensity(f, mask, s):
                 if (mask[x2,y2] == 1) & (mask[x2+k,y2] == 1):
                     n2 += np.abs(f[x2,y2]-f[x2+k,y2])
                     cn2 += 1
-        IDV[k-1] = (n1+n2)/(cn1+cn2)
+        IDV[k-1] = (n1+n2)/(cn1+cn2+1e-16)
           
     return IDV
 
-# Multiple resolution feature exctraction
+
 def _resolution(x, mask, mr, mc):  
+    '''
+    Multiple resolution feature exctraction
+    '''
     nr = (2 ** mr) - 1
     nc = (2 ** mc) - 1  
     nr_int = nr.astype('i')
@@ -57,8 +58,30 @@ def _resolution(x, mask, mr, mc):
     res_mask[res_mask>1] = 1
     return res, res_mask
     
-# Fractal Dimension Texture Analysis
+
 def fdta(f, mask, s=3):
+    '''
+    Parameters
+    ----------
+    f : numpy ndarray
+        Image of dimensions N1 x N2.
+    mask : numpy ndarray
+        Mask image N1 x N2 with 1 if pixels belongs to ROI, 0 else. Give None
+        if you want to consider ROI the whole image.
+    s : int, optional
+        max resolution to calculate Hurst coefficients. The default is 3
+
+    Returns
+    -------
+    h : numpy ndarray
+        Hurst coefficients.
+    labels : list
+        Labels of h.
+    '''
+    
+    if mask is None:
+        mask = np.ones(f.shape)
+        
     labels = ["FDTA_HurstCoeff"] * (s+1)
     labels = [label + "_" + str(i+1) for i,label in enumerate(labels)]
     f = np.array(f, np.double)

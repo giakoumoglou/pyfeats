@@ -16,6 +16,19 @@ Outputs:
 import mahotas
 
 def tas_features(f):
+    '''
+    Parameters
+    ----------
+    f : numpy ndarray
+        Image of dimensions N1 x N2.
+
+    Returns
+    -------
+    features : numpy ndarray
+        Feature values.
+    labels : list
+        Labels of features.
+    '''    
 
     features = mahotas.features.pftas(f)
     labels = ['TAS' + str(i) for i in range(features.shape[0])]

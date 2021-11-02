@@ -8,20 +8,6 @@
             Acharya, Automatic identification of epileptic eeg singal susing nonlinear parameters
             Acharya, Application of higher order spectra for the identification of diabetes retinopathy stages
 ==============================================================================            
-Higher Order Spectra on Radeon Transform
-==============================================================================
-1. Image 2D I(x,y)
-2. Radon Transform (theta) -> output: projection 1D
-3. Bispectrum of projection -> output: 2D array f1 x f2 (=128)
-4. Features: entropy of 2D array f1 x f2
-==============================================================================
-Inputs:
-    - f:        image of dimensions N1 x N2
-    - th:       theta to calculate radeon transform (135,140 used in [12])
-Outputs:
-    - features: entropy of bispectrum of radeon transform of image for each 
-                angle in theta
-==============================================================================
 """
 
 import numpy as np
@@ -34,6 +20,21 @@ def _entropy(x):
     return -np.multiply(x, np.log(x+1e-16)).sum()
 
 def hos_features(f, th=[135,140]):
+    '''
+    Parameters
+    ----------
+    f : numpy ndarray
+        Image of dimensions N1 x N2.
+    th : list, optional
+        Angle to calculate Radon Transform. The default is [135,140].
+
+    Returns
+    -------
+    features : numpy ndarray
+        Entropy of bispectrum of radeon transform of image for each angle in theta.
+    labels : list
+        Labels of features.
+    '''
     
     warnings.filterwarnings("ignore")
     f = f.astype(np.float32)

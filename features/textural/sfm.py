@@ -5,20 +5,30 @@
 @date: Fri May  7 16:20:47 2021
 @reference: Wu, Statistical Feature Matrix for Texture Analysis
 ==============================================================================
-Statistical Feature Matrix
-==============================================================================
-Inputs:
-    - f:        image of dimensions N1 x N2
-    - mask:     int boolean image N1 x N2 with 1 if pixels belongs to ROI, 
-                0 else
-    - Lr, Lc:   parameters of SFM
-Outputs:
-    - features: 1)Coarseness, 2) Contrast, 3)Periodicity, 4)Roughness
-==============================================================================
 """
 import numpy as np
 
 def con_cov_dss(f, mask, Lr, Lc, Ng=256):
+    '''
+    Parameters
+    ----------
+    f : numpy ndarray
+        Image of dimensions N1 x N2.
+    mask : numpy ndarray
+        Mask image N1 x N2 with 1 if pixels belongs to ROI, 0 else
+    Lr : int
+        Parameters of SFM.
+    Lc : int
+        Parameters of SFM.
+    Ng : int, optional
+        Image number of gray values. The default is 256.
+
+    Returns
+    -------
+    CON : numpy ndarray
+    COV : numpy ndarray
+    DSS : numpy ndarray
+    '''
     
     N1, N2 = f.shape
     CON = np.zeros((Lr+1,2*Lc+1),np.double) # delta contrast
@@ -62,7 +72,30 @@ def con_cov_dss(f, mask, Lr, Lc, Ng=256):
     return CON, COV, DSS
 
 def sfm_features(f, mask, Lr=4, Lc=4):
+    '''  
+    Parameters
+    ----------
+    f : numpy ndarray
+        Image of dimensions N1 x N2.
+    mask : numpy ndarray
+        Mask image N1 x N2 with 1 if pixels belongs to ROI, 0 else. Give None
+        if you want to consider ROI the whole image.
+    Lr : int, optional
+        Parameters of SFM. The default is 4.
+    Lc : int, optional
+        Parameters of SFM. The default is 4.
+
+    Returns
+    -------
+    features : numpy ndarray
+        1)Coarseness, 2) Contrast, 3)Periodicity, 4)Roughness.
+    labels : list
+        Labels of features.
+    '''
     
+    if mask is None:
+        mask = np.ones(f.shape)
+        
     # 1) Labels
     labels = ["SFM_Coarseness","SFM_Contrast","SFM_Periodicity","SFM_Roughness"]
     

@@ -6,21 +6,25 @@
 @reference: Weszka, A Comparative Study of Texture Measures for Terrain Classification
             Wu, Texture Features for Classification
 ==============================================================================
-Fourier Power Spectrum
-==============================================================================
-Inputs:
-    - f:        image of dimensions N1 x N2
-    - mask:     int boolean image N1 x N2 with 1 if pixels belongs to ROI, 
-                0 else
-Outputs:
-    - features: 1)Radial Sum, 2)Angular Sum
-==============================================================================
 """
 
 import numpy as np
 
 # FIXME
 def _fft2(x,msk):
+    '''
+    Parameters
+    ----------
+    f : numpy ndarray
+        Image of dimensions N1 x N2.
+    msk : numpy ndarray
+        Mask image N1 x N2 with 1 if pixels belongs to ROI, 0 else.
+
+    Returns
+    -------
+    F : numpy ndarray
+        2D Fourier Transform inside msk.
+    '''
     N1,N2 = x.shape
     F = np.zeros((N1,N2), np.complex64)
     
@@ -72,7 +76,26 @@ def _fft2(x,msk):
     return F
 
 def fps(f, mask):
-    
+    '''
+    Parameters
+    ----------
+    f : numpy ndarray
+        Image of dimensions N1 x N2.
+    mask : numpy ndarray
+        Mask image N1 x N2 with 1 if pixels belongs to ROI, 0 else. Give None
+        if you want to consider ROI the whole image.
+
+    Returns
+    -------
+    features : numpy ndarray
+        1)Radial Sum, 2)Angular Sum.
+    labels : list
+        Labels of features.
+    '''
+
+    if mask is None:
+        mask = np.ones(f.shape)
+        
     # 1) Labels
     labels = ["FPS_RadialSum", "FPS_AngularSum"]
     

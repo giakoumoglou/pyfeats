@@ -5,22 +5,30 @@
 @date: Thu May  6 19:10:11 2021
 @reference: Weszka, A Comparative Study of Texture Measures for Terrain Classification
 ==============================================================================
-Gray Level Difference Statistics
-==============================================================================
-Inputs:
-    - f:        image of dimensions N1 x N2
-    - mask:     int boolean image N1 x N2 with 1 if pixels belongs to ROI, 
-                0 else
-    - Dx:       array with X-coordinates of vectors denoting orientation
-    - Dy:       array with Y-coordinates of vectors denoting orientation
-Outputs:
-    - features: 1) Contrast, 2)Angular Second Moment, 3)Entropy, 4)Mean
-==============================================================================
 """
 
 import numpy as np
 
 def glds(f, mask, dx, dy, Ng):
+    '''
+    Parameters
+    ----------
+    f : numpy ndarray
+        Image of dimensions N1 x N2.
+    mask : numpy ndarray
+        Mask image N1 x N2 with 1 if pixels belongs to ROI, 0 else
+    dx : int
+        Orientation in X-coordinate
+    dy : int
+        Orientation in Y-coordinate
+    Ng : int
+        Image number of gray values
+
+    Returns
+    -------
+    f_d : numpy ndarray
+    p_d : numpy ndarray
+    '''
     
     N1, N2 = f.shape
     
@@ -40,7 +48,31 @@ def glds(f, mask, dx, dy, Ng):
     return f_d, p_d
      
 def glds_features(f, mask, Dx=[0,1,1,1], Dy=[1,1,0,-1]):
+    '''
+    Parameters
+    ----------
+    f : numpy ndarray
+        Image of dimensions N1 x N2.
+    mask : numpy ndarray
+        Mask image N1 x N2 with 1 if pixels belongs to ROI, 0 else.
+    Dx : int, optional
+        Array with X-coordinates of vectors denoting orientation. The default
+        is [0,1,1,1].
+    Dy : int, optional
+        Array with Y-coordinates of vectors denoting orientation. The default
+        is [1,1,0,-1].
+        
+    Returns
+    -------
+    features : numpy ndarray
+        1) Contrast, 2)Angular Second Moment, 3)Entropy, 4)Mean
+    labels : list
+        Labels of features.
+    '''
     
+    if mask is None:
+        mask = np.ones(f.shape)
+        
     # 1) Labels
     labels =  ["GLDS_Homogeneity","GLDS_Contrast",
                "GLDS_ASM","GLDS_Entopy","GLDS_Mean"]

@@ -6,21 +6,6 @@
 @reference: Ojala, A Comparative Study of Texture Measures with Classification on Feature Distributions
             Ojala, Gray Scale and Roation Invariaant Texture Classification with Local Binary Patterns
 ==============================================================================
-Local Binary Pattern (LBP)
-==============================================================================
-1. Image f(x,y)
-2. Image LBP(P,R)(x,y) from f(x,y) with P neigbors and radius R
-3. Features: energy & entropy of LBP(P,R)(x,y)
-==============================================================================
-Inputs:
-    - f:        image of dimensions N1 x N2
-    - mask:     int boolean image N1 x N2 with 1 if pixels belongs to ROI, 
-                0 else
-    - P:        number of points in neighborhood 
-    - R:        radius/radii
-Outputs:
-    - features: energy and entropy of LBP image (2 x 1)
-==============================================================================
 """
 
 import numpy as np
@@ -33,6 +18,30 @@ def _entropy(x):
     return -np.multiply(x, np.log(x+1e-16)).sum()
 
 def lbp_features(f, mask, P=[8,16,24], R=[1,2,3]):
+    '''
+    Parameters
+    ----------
+    f : numpy ndarray
+        Image of dimensions N1 x N2.
+    mask : numpy ndarray
+        Mask image N1 x N2 with 1 if pixels belongs to ROI, 0 else. Give None
+        if you want to consider ROI the whole image.
+    P : list, optional
+        Number of points in neighborhood. The default is [8,16,24].
+    R : list, optional
+        Radius/Radii. The default is [1,2,3].
+
+    Returns
+    -------
+    features : numpy ndarray
+        Energy and entropy of LBP image (2 x 1).
+    labels : list
+        Labels of features.
+    '''
+    
+    if mask is None:
+        mask = np.ones(f.shape)
+        
     P = np.array(P)
     R = np.array(R)
     n = P.shape[0]

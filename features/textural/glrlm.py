@@ -7,22 +7,6 @@
 @date: Sat May  8 17:00:35 2021
 @reference: Gallowway, Texture Analysis using Gray Level Run Lengths
 ==============================================================================
-Gray Level Run Length Matrix
-==============================================================================
-Inputs:
-    - f:        image of dimensions N1 x N2
-    - mask:     int boolean image N1 x N2 with 1 if pixels belongs to ROI, 
-                0 else
-    - Ng:       number of gray levels (default=256)
-Outputs:
-    - features: 1)Short Run Emphasis, 2)Long Run Emphasis, 3)Gray Level 
-                Non-Uniformity/Gray Level Distribution, 4)Run Length 
-                Non-Uniformity/Run Length Distribution, 5)Run Percentage,
-                6)Low Gray Level Run Emphasis, 7)High Gray Level Run Emphasis,
-                8)Short Low Gray Level Emphasis, 9)Short Run High Gray Level 
-                Emphasis, 10)Long Run Low Gray Level Emphasis, 11)Long Run 
-                High Gray Level Emphasis
-==============================================================================
 """
     
 import numpy as np
@@ -179,17 +163,59 @@ def _calculate_ij (rlmatrix):
 def _calculate_s(rlmatrix):
     return np.apply_over_axes(np.sum, rlmatrix, axes=(0, 1))[0, 0]
 
-def glrlm(f, mask, grayLevel=256):   
+def glrlm(f, mask, Ng=256):   
+    '''
+    Parameters
+    ----------
+    f : numpy ndarray
+        Image of dimensions N1 x N2.
+    mask : numpy ndarray
+        Mask image N1 x N2 with 1 if pixels belongs to ROI, 0 else.
+    Ng : int, optional
+        Image number of gray values. The default is 256.
+
+    Returns
+    -------
+    mat : numpy ndarray
+        GLRL Matrices for 0, 45, 90 and 135 degrees.
+    '''
     runLength = max(f.shape)
-    mat0 = glrlm_0(f, mask, grayLevel=grayLevel, runLength=runLength)
-    mat45 = glrlm_45(f, mask, grayLevel=grayLevel, runLength=runLength)
-    mat90 = glrlm_90(f, mask, grayLevel=grayLevel, runLength=runLength)
-    mat135 = glrlm_135(f, mask, grayLevel=grayLevel, runLength=runLength)            
+    mat0 = glrlm_0(f, mask, grayLevel=Ng, runLength=runLength)
+    mat45 = glrlm_45(f, mask, grayLevel=Ng, runLength=runLength)
+    mat90 = glrlm_90(f, mask, grayLevel=Ng, runLength=runLength)
+    mat135 = glrlm_135(f, mask, grayLevel=Ng, runLength=runLength)            
     mat = np.dstack((mat0, mat45, mat90, mat135))      
     return mat
 
 def glrlm_features(f, mask, Ng=256):
+    '''
+    Parameters
+    ----------
+    f : numpy ndarray
+        Image of dimensions N1 x N2.
+    mask : numpy ndarray
+        Mask image N1 x N2 with 1 if pixels belongs to ROI, 0 else. Give None
+        if you want to consider ROI the whole image.
+    Ng : int, optional
+        Image number of gray values. The default is 256.
+
+    Returns
+    -------
+    features : numpy ndarray
+        1)Short Run Emphasis, 2)Long Run Emphasis, 3)Gray Level 
+        Non-Uniformity/Gray Level Distribution, 4)Run Length 
+        Non-Uniformity/Run Length Distribution, 5)Run Percentage,
+        6)Low Gray Level Run Emphasis, 7)High Gray Level Run Emphasis,
+        8)Short Low Gray Level Emphasis, 9)Short Run High Gray Level 
+        Emphasis, 10)Long Run Low Gray Level Emphasis, 11)Long Run 
+        High Gray Level Emphasis.
+    labels : list
+        Labels of features.
+    '''
     
+    if mask is None:
+        mask = np.ones(f.shape)
+        
     labels = ["GLRLM_ShortRunEmphasis",
               "GLRLM_LongRunEmphasis",
               "GLRLM_GrayLevelNo-Uniformity",

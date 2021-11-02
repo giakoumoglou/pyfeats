@@ -4,25 +4,35 @@
 @author: Nikolaos Giakoumoglou
 @date: Sat May  8 12:14:26 2021
 ==============================================================================
-Shape Parameters
-==============================================================================
-Inputs:
-    - f:              image of dimensions N1 x N2
-    - mask:           int boolean image N1 x N2 with 1 if pixels belongs to 
-                      ROI, 0 else
-    - perimeter:      int boolean image N x M with 1 if pixels belongs to 
-                      perimeter of ROI, 0 else
-    - pixels_per_mm2: density of ultrasound
-Outputs:
-    - features:       1,2)X, Y coordinate max length, 3)area, 4)perimeter, 
-                      5)perimeter2/area
-==============================================================================
 """
 
 import numpy as np
 
 def shape_parameters(f, mask, perimeter, pixels_per_mm2=1):
-    
+    ''' 
+    Parameters
+    ----------
+    f : numpy ndarray
+        Image of dimensions N1 x N2.
+    mask : numpy ndarray
+        Mask image N1 x N2 with 1 if pixels belongs to ROI, 0 else. Give None
+        if you want to consider ROI the whole image.
+    perimeter : numpy ndarray
+         Image N1 x N2 with 1 if pixels belongs to perimeter of ROI, 0 else.
+    pixels_per_mm2 : int, optional
+        Density of image f. The default is 1.
+
+    Returns
+    -------
+    features : numpy ndarray
+        1,2)X, Y coordinate max length, 3)area, 4)perimeter, 5)perimeter2/area.
+    labels : list
+        Labels of features.
+    '''
+
+    if mask is None:
+        mask = np.ones(f.shape)
+        
     # 1) Labels
     labels = ["SHAPE_XcoordMax", "SHAPE_YcoordMax", "SHAPE_area",
               "SHAPE_perimeter", "SHAPE_perimeter2perArea"]
