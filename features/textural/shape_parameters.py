@@ -43,7 +43,7 @@ def shape_parameters(f, mask, perimeter, pixels_per_mm2=1):
     N1, N2 = mask.shape
     
     # 3) Find X max coordinate
-    start, end = None, None
+    start, end = 0, N1
     for x in range(N1):
         if (sum(mask[x,:])>0) & (start==None):
             start = x
@@ -53,7 +53,7 @@ def shape_parameters(f, mask, perimeter, pixels_per_mm2=1):
     Xcoord_max = end - start + 1
     
     # 4) Find Y max coordinate
-    start, end = None, None
+    start, end = 0, N2
     for x in range(N2):
         if (sum(mask[:,x])>0) & (start==None):
             start = x
