@@ -2,6 +2,14 @@
 # Image Feature Extraction in Region-of-Interest
 A collection of python functions for feature extraction. The features are calculated inside a Region of Interest (ROI) and not for the whole image: the image is actually a polygon! More and more features will be added. Please feel free to point out any mistakes or improvemets. The aim is to create a library for image feature extraction. Message me for more details.
 
+## 0. Install through pip
+
+Now the project can be found at https://pypi.org/project/pyfeats/
+Install using the following command:
+```python
+pip install pyfeats
+```
+
 ## 1. Features
 
 ### 1.1 Textural Features
