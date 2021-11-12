@@ -9,6 +9,10 @@ Install using the following command:
 ```console
 pip install pyfeats
 ```
+Use calling:
+```python
+import pyfeats
+```
 
 ## 1. Features
 
