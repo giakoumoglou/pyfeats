@@ -4,7 +4,7 @@ A collection of python functions for feature extraction. The features are calcul
 
 ## 0. Install through pip
 
-Now the project can be found at https://pypi.org/project/pyfeats/
+Now the project can be found at https://pypi.org/project/pyfeats/.
 Install using the following command:
 ```console
 pip install pyfeats
