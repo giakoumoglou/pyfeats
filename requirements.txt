@@ -1,7 +1,7 @@
-numpy==1.19.2
-scikit-image==0.17.2
-matplotlib==3.3.4
-scipy==1.5.2
-opencv-python==4.5.4.58
-mahotas==1.4.12
-pywt==1.1.1
+numpy
+scikit-image
+matplotlib
+scipy
+opencv-python
+mahotas
+PyWavelets
