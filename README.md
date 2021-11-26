@@ -3,8 +3,9 @@
 Open source software for image feature extraction
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
-[![Downloads](https://static.pepy.tech/personalized-badge/pyfeats?period=total&units=international_system&left_color=grey&right_color=green&left_text=Downloads)](https://pepy.tech/project/pyfeats)
-[![Downloads](https://static.pepy.tech/personalized-badge/pyfeats?period=month&units=international_system&left_color=grey&right_color=green&left_text=Downloads/month)](https://pepy.tech/project/pyfeats)
+[![Downloads](https://pepy.tech/badge/pyfeats)](https://pepy.tech/project/pyfeats)
+[![Downloads](https://pepy.tech/badge/pyfeats/month)](https://pepy.tech/project/pyfeats)
+[![Downloads](https://pepy.tech/badge/pyfeats/week)](https://pepy.tech/project/pyfeats)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/giakou4/Features/LICENSE)
 [![PyPi](https://badgen.net/badge/icon/pypi?icon=pypi&label)](https://pypi.org/project/pyfeats/)
 
