@@ -2,7 +2,7 @@
 # Image Feature Extraction in Region-of-Interest
 A collection of python functions for feature extraction. The features are calculated inside a region-of-interest (ROI) and not for the whole image: the image is actually a polygon.
 
-## 0. Install through pip
+## 1. Install through pip
 
 Now the project can be found at https://pypi.org/project/pyfeats/.
 Install using the following command:
@@ -14,9 +14,9 @@ Use calling:
 import pyfeats
 ```
 
-## 1. Features
+## 2. Features
 
-### 1.1 Textural Features
+### 2.1 Textural Features
 1. First Order Statistics/Statistical Features (FOS/SF)
 2. Gray Level Co-occurence Matrix (GLCM/SGLDM)
 3. Gray Level Difference Statistics (GLDS)
@@ -31,16 +31,16 @@ import pyfeats
 12. Higher Order Spectra (HOS)
 13. Local Binary Pattern (LPB)
 
-### 1.2 Morphological Features
+### 2.2 Morphological Features
 1. Grayscale Morphological Analysis
 2. Multilevel Binary Morphological Analysis
 
-### 1.3 Histogram Based Features
+### 2.3 Histogram Based Features
 1. Histogram
 2. Multi-region histogram
 3. Correlogram
 
-### 1.4 Multi-scale Features
+### 2.4 Multi-scale Features
 1. Fractal Dimension Texture Analysis (FDTA)
 2. Amplitude Modulation – Frequency Modulation (AM-FM)
 3. Discrete Wavelet Transform (DWT)
@@ -48,17 +48,11 @@ import pyfeats
 5. Wavelet Packets (WP)
 6. Gabor Transform (GT)
 
-### 1.5 Other Features
+### 2.5 Other Features
 1. Zernikes’ Moments
 2. Hu’s Moments
 3. Threshold Adjacency Matrix (TAS)
 4. Histogram of Oriented Gradients (HOG)
-
-## 2. Use
-Download the folder features, add to path and call
-```python
-from features import *
-```
 
 ## 3. How to use each feature set
 For the following sections, assume
