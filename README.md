@@ -712,14 +712,14 @@ fd, labels = hog_features(f, ppc, cpb)
 ## 4. Citation
 In Bibtex format:
 
->   @misc{Giakoumoglou2021,
->     author = {Nikolaos Giakoumoglou},
->     title = {PyFeats: Open source software for image feature extraction},
->     year = {2021},
->     publisher = {GitHub},
->     journal = {GitHub repository},
->     howpublished = {\url{https://github.com/giakou4/pyfeats}},
->   }
+>   @misc{Giakoumoglou2021,  
+>     author = {Nikolaos Giakoumoglou},  
+>     title = {PyFeats: Open source software for image feature extraction},  
+>     year = {2021},  
+>     publisher = {GitHub},  
+>     journal = {GitHub repository},  
+>     howpublished = {\url{https://github.com/giakou4/pyfeats}},  
+>   }  
 
 
 ## 5. Support
