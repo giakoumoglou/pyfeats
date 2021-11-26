@@ -2,7 +2,7 @@
 
 Open source software for image feature extraction
 
-[![Downloads](https://pepy.tech/badge/mahotas/month)](https://pepy.tech/project/pyfeats)
+[![Downloads](https://static.pepy.tech/badge/pyfeats/month)](https://pepy.tech/project/pyfeats)
 
 ## 1. Install through pip
 
