@@ -8,6 +8,8 @@ Open source software for image feature extraction
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/giakou4/Features/LICENSE)
 [![PyPi](https://badgen.net/badge/icon/pypi?icon=pypi&label)](https://pypi.org/project/pyfeats/)
 
+[![PyPI download month](https://img.shields.io/pypi/dm/ansicolortags.svg)](https://pypi.python.org/pyfeats/ansicolortags/)
+
 ## 1. Install through pip
 
 Now the project can be found at https://pypi.org/project/pyfeats/.
