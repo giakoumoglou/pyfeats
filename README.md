@@ -715,14 +715,27 @@ fd, labels = hog_features(f, ppc, cpb)
     '''
 ```
 
-## 4. Support
+## 4. Citation
+In Bibtex format:
+
+>   @misc{Giakoumoglou2021,
+>     author = {Nikolaos Giakoumoglou},
+>     title = {PyFeats: Open source software for image feature extraction},
+>     year = {2021},
+>     publisher = {GitHub},
+>     journal = {GitHub repository},
+>     howpublished = {\url{https://github.com/giakou4/pyfeats}},
+>   }
+
+
+## 5. Support
 Reach out to me:
 - [giakou4's email](mailto:ngiakoumoglou@hotmail.com "ngiakoumoglou@hotmail.com")
 
-## 5. License
+## 6. License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/giakou4/Features/LICENSE)
 
-## 6. Python Libraries Cited:
+## 7. Python Libraries Cited:
 * Bradski, G. (2000). The OpenCV Library. Dr. Dobb&#x27;s Journal of Software Tools.
 * Coelho, L.P. 2013. Mahotas: Open source software for scriptable computer vision. Journal of Open Research Software 1(1):e3, DOI: http://dx.doi.org/10.5334/jors.ac
 * Hunter, J. D. (2007). Matplotlib: A 2D graphics environment. Computing in Science &amp; Engineering, 9(3), 90–95.
@@ -731,7 +744,7 @@ Reach out to me:
 * Virtanen, P., Gommers, R., Oliphant, T. E., Haberland, M., Reddy, T., Cournapeau, D., … SciPy 1.0 Contributors. (2020). SciPy 1.0: Fundamental Algorithms for Scientific Computing in Python. Nature Methods, 17, 261–272. https://doi.org/10.1038/s41592-019-0686-2
 * Van der Walt, S., Sch"onberger, Johannes L, Nunez-Iglesias, J., Boulogne, Franccois, Warner, J. D., Yager, N., … Yu, T. (2014). scikit-image: image processing in Python. PeerJ, 2, e453.
 
-## 7. Features Theory Citation:
+## 8. Features Theory Citation:
 * Acharya U, R., Chua, C. K., Ng, E. Y., Yu, W., & Chee, C. (2008, 12 01). Application of Higher Order Spectra for the Identification of Diabetes Retinopathy Stages. Journal of Medical Systems, 32, 481-488. doi:10.1007/s10916-008-9154-8
 * Acharya, U. R., Chua, K., Lim, T.-C., Tay, D., & Suri, J. (2009, 12). Automatic identification of epileptic EEG signals using nonlinear parameters. Journal of Mechanics in Medicine and Biology, 9, 539-553. doi:10.1142/S0219519409003152
 * Amadasun, M., & King, R. (1989). Textural features corresponding to textural properties. IEEE Trans. Syst. Man Cybern., 19, 1264-1274.
