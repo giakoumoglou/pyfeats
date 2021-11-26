@@ -3,6 +3,7 @@
 Open source software for image feature extraction
 
 [![Downloads](https://static.pepy.tech/badge/pyfeats/month)](https://pepy.tech/project/pyfeats)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/giakou4/Features/LICENSE)
 
 ## 1. Install through pip
 
