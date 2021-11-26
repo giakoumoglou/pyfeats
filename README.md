@@ -1,6 +1,9 @@
+# PyFeats
 
-# Image Feature Extraction in Region-of-Interest
-A collection of python functions for feature extraction. The features are calculated inside a region-of-interest (ROI) and not for the whole image: the image is actually a polygon.
+Open source software for image feature extraction
+
+[![Downloads](https://pepy.tech/badge/mahotas/month)](https://pepy.tech/project/pyfeats/month)
+[![License](http://badge.kloud51.com/pypi/l/mahotas.svg)](http://opensource.org/licenses/MIT)
 
 ## 1. Install through pip
 
