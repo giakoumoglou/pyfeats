@@ -1,32 +1,9 @@
-# This CITATION.cff file was generated with cffinit.
-# Visit https://bit.ly/cffinit to generate yours today!
-
-cff-version: 1.2.0
-title: PyFeats
-message: 
-type: software
-authors:
-  - given-names: Nikolaos 
-    email: ngiakoumoglou@hotmail.com
-
-
 abstract: Open source software for image feature extraction
 authors:
-  - family-names: Nikolaos
-    given-names: Giakoumoglou
-cff-version: 1.2.0
+  - family-names: Giakoumoglou
+    given-names: Nikolaos
 date-released: "2021-11-1"
-identifiers:
-  - description: This is the collection of archived snapshots of all versions of My Research Software
-    type: doi
-    value: 10.5281/zenodo.123456
-  - description: This is the archived snapshot of version 0.11.2 of My Research Software
-    type: doi
-    value: 10.5281/zenodo.123457
-keywords:
-  - feature_extraction
-  - computer_vision
-license: Apache-2.0
+license: MIT
 message: If you use this software, please cite it using these metadata.
 repository-code: "https://github.com/giakou4/pyfeats"
 title: PyFeats
