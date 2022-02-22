@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/giakou4/features/blob/main/demo/data/logo.jpg">
+  <img src="https://github.com/giakou4/features/blob/main/demo/data/PyFeats Logo.jpg">
 </p>
 
 # PyFeats
