@@ -1,5 +1,9 @@
 # PyFeats
 
+<p align="center">
+  <img width="375" height="130" src="https://github.com/giakou4/features/blob/main/demo/data/logo.png">
+</p>
+
 Open source software for image feature extraction
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
