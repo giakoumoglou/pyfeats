@@ -1,8 +1,8 @@
-# PyFeats
-
 <p align="center">
   <img width="375" height="130" src="https://github.com/giakou4/features/blob/main/demo/data/logo.jpg">
 </p>
+
+# PyFeats
 
 Open source software for image feature extraction
 
