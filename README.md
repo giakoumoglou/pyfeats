@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://www.provideocoalition.com/wp-content/uploads/AAC-recortado.jpg">
+  <img src="https://github.com/giakou4/features/blob/main/demo/data/PyFeats Logo.jpg">
 </p>
 
 # PyFeats
