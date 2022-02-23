@@ -248,7 +248,7 @@ In Bibtex format:
      publisher = {GitHub},  
      journal = {GitHub repository},  
      howpublished = {\url{https://github.com/giakou4/pyfeats}},  
->   }  
+   }  
 ```
 
 ## 5. Support
