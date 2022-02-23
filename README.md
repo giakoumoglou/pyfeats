@@ -253,7 +253,7 @@ In Bibtex format:
 
 ## 5. Support
 Reach out to me:
-- [giakou4's email](mailto:ngiakoumoglou@hotmail.com "ngiakoumoglou@hotmail.com")
+- [giakou4's email](mailto:ngiakoumoglou@gmail.com "ngiakoumoglou@gmail.com")
 
 ## 6. Python Libraries Cited:
 * Bradski, G. (2000). The OpenCV Library. Dr. Dobb&#x27;s Journal of Software Tools.
