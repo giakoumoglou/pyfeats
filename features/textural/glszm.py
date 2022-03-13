@@ -14,8 +14,9 @@ ps = ps[ps!=0]) and as a result jvector changes outputs.
 
 import numpy as np
 from skimage import measure
+import warnings
 
-def glszm(f, mask):
+def glszm(f, mask, connectivity=1):
     '''
     Parameters
     ----------
@@ -24,12 +25,24 @@ def glszm(f, mask):
     mask : numpy ndarray
         Mask image N1 x N2 with 1 if pixels belongs to ROI, 0 else. Give None
         if you want to consider ROI the whole image.
+    connectivity: Maximum number of orthogonal hops to consider a pixel/voxel 
+        as a neighbor. Accepted values are ranging from 1 to input.ndim. If 
+        None, a full connectivity of input.ndim is used.
 
     Returns
     -------
     GLSZM : numpy ndarray
         GLSZ Matrix.
     '''
+    if connectivity == None:
+        pass
+    elif connectivity > f.ndim:
+        connectivity = f.ndim
+        warnings.warn('Accepted values for connectivity are ranging from 1 to f.ndim. Changed to f.ndim')
+    elif connectivity < 1:
+        connectivity = 1
+        warnings.warn('Accepted values for connectivity are ranging from 1 to f.ndim. Changed to 1')
+    
     Ng = 256
     levels=np.arange(0,Ng)
 
@@ -40,7 +53,7 @@ def glszm(f, mask):
     for i in range(Ng-1):
         temp[f!=levels[i]] = 0
         temp[f==levels[i]] = 1
-        connected_components = measure.label(temp, connectivity=1)
+        connected_components = measure.label(temp, connectivity=connectivity)
         connected_components = connected_components * mask
         nZone = len(np.unique(connected_components))
         for j in range(nZone):
