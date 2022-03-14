@@ -7,6 +7,7 @@
 Open source software for image feature extraction
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
+[![version](https://img.shields.io/pypi/v/pyfeats)]()
 [![Downloads](https://pepy.tech/badge/pyfeats)](https://pepy.tech/project/pyfeats)
 [![Downloads](https://pepy.tech/badge/pyfeats/month)](https://pepy.tech/project/pyfeats)
 [![Downloads](https://pepy.tech/badge/pyfeats/week)](https://pepy.tech/project/pyfeats)
