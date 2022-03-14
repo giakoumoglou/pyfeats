@@ -82,6 +82,8 @@ The demo has an analytic way on how to create _mask_ and _perimeter_, given a se
   <img width="375" height="130" src="https://github.com/giakou4/features/blob/main/demo/data/perimeter.png">
 </p>
 
+Note than an analytical description of how each feature is calculated lies in ```pyfeats.pdf```.
+
 ### 3.1 Textural Features
 #### 3.1.1 First Order Statistics/Statistical Features (FOS/SF)
 First Order Statistics (FOS) are calculated from the histogram of the image which is the empirical probability density function for single pixels. The FOS features are the following:  1) mean, 2) standard deviation, 3) median, 4) mode, 5) skewnewss, 6) kurtosis, 7) energy, 8) entropy, 9) minimal gray level, 10) maximal gray leve, 11) coefficient of variation, 12,13,14,15) percentiles (10, 25, 50, 75, 90) and 16) histogram width.
