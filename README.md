@@ -17,8 +17,8 @@ Open source software for image feature extraction
 ![issues-closed](https://img.shields.io/github/issues-closed/giakou4/pyfeats.svg)
 ![size](https://img.shields.io/github/languages/code-size/giakou4/pyfeats)
 
-[comment]: <> [![PyPi](https://badgen.net/badge/icon/pypi?icon=pypi&label)](https://pypi.org/project/pyfeats/)
-[comment]: <> ![forks](https://img.shields.io/github/forks/giakou4/pyfeats.svg)
+[comment]:[![PyPi](https://badgen.net/badge/icon/pypi?icon=pypi&label)](https://pypi.org/project/pyfeats/)
+[comment]:![forks](https://img.shields.io/github/forks/giakou4/pyfeats.svg)
 
 ## 1. Install through pip
 
