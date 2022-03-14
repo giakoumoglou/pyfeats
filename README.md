@@ -243,7 +243,7 @@ fd, labels = hog_features(f, ppc=8, cpb=3)
 ## 4. Citation
 In Bibtex format:
 ```bibtex
-@misc{Giakoumoglou2021,  
+@misc{pyfeats2021giakoumoglou,  
      author = {Nikolaos Giakoumoglou},  
      title = {PyFeats: Open source software for image feature extraction},  
      year = {2021},  
