@@ -10,11 +10,9 @@ Open source software for image feature extraction
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/giakou4/pyfeats/LICENSE)
 [![PyPi](https://badgen.net/badge/icon/pypi?icon=pypi&label)](https://pypi.org/project/pyfeats/)
 [![version](https://img.shields.io/pypi/v/pyfeats)]()
-
 [![Downloads](https://pepy.tech/badge/pyfeats)](https://pepy.tech/project/pyfeats)
 [![Downloads](https://pepy.tech/badge/pyfeats/month)](https://pepy.tech/project/pyfeats)
 [![Downloads](https://pepy.tech/badge/pyfeats/week)](https://pepy.tech/project/pyfeats)
-
 ![forks](https://img.shields.io/github/forks/giakou4/pyfeats.svg)
 ![stars](https://img.shields.io/github/stars/giakou4/pyfeats.svg)
 ![issues-open](https://img.shields.io/github/issues/giakou4/pyfeats.svg)
