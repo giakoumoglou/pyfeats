@@ -8,7 +8,7 @@
 """
 import numpy as np
 
-def con_cov_dss(f, mask, Lr, Lc, Ng=256):
+def con_cov_dss(f, mask, Lr=4, Lc=4, Ng=256):
     '''
     Parameters
     ----------
@@ -16,10 +16,10 @@ def con_cov_dss(f, mask, Lr, Lc, Ng=256):
         Image of dimensions N1 x N2.
     mask : numpy ndarray
         Mask image N1 x N2 with 1 if pixels belongs to ROI, 0 else
-    Lr : int
-        Parameters of SFM.
-    Lc : int
-        Parameters of SFM.
+    Lr : int, optional
+        Parameters of SFM. The default is 4.
+    Lc : int, optional
+        Parameters of SFM. The default is 4.
     Ng : int, optional
         Image number of gray values. The default is 256.
 

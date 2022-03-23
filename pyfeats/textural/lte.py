@@ -12,6 +12,7 @@
 import numpy as np
 from scipy import signal
 from ..utilities import _image_xor
+import warnings
 
 def lte_measures(f, mask, l=7):
     '''
@@ -50,6 +51,9 @@ def lte_measures(f, mask, l=7):
     kernels = np.zeros((l,l,9), np.double)
     
     # 3) From 3 kernels [L, E, S], get 9 [LL, LE, LS, EL, EE, ES, SL, SE, SS]
+    if l not in [3,5,7]:
+        warnings.warn('Accepted vsize for Laws mask are 3, 5 and 7. Using 7 by default')
+        l = 7
     if l==3:
         L = np.array([ 1,  2,  1], np.double)
         E = np.array([-1,  0,  1], np.double)
@@ -58,10 +62,11 @@ def lte_measures(f, mask, l=7):
         L = np.array([ 1,  4,  6,  4,  1], np.double)
         E = np.array([-1, -2,  0,  2,  1], np.double)
         S = np.array([-1,  0,  2,  0, -1], np.double)
-    else:
+    elif l==7:
         L = np.array([ 1,  6,  15,  20,  15,  6,  1], np.double)
         E = np.array([-1, -4,  -5,   0,   5,  4,  1], np.double)
         S = np.array([-1, -2,   1,   4,   1, -2, -1], np.double)
+        
     oneskernel = np.ones((l,l), np.double)    
     kernels = np.zeros((l,l,9), np.double)
     kernels[:,:,0] = np.multiply(L.reshape(-1,1),L) # LL kernel
