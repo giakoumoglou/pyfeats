@@ -6,6 +6,7 @@
 
 Open source software for image feature extraction
 
+[![DOI](https://zenodo.org/badge/371957337.svg)](https://zenodo.org/badge/latestdoi/371957337)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/giakou4/pyfeats/LICENSE)
 [![version](https://img.shields.io/pypi/v/pyfeats)](https://pypi.org/project/pyfeats/)
