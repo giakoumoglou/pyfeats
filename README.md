@@ -21,7 +21,6 @@ Open source software for image feature extraction
 [comment]:[![PyPi](https://badgen.net/badge/icon/pypi?icon=pypi&label)](https://pypi.org/project/pyfeats/)
 [comment]:![forks](https://img.shields.io/github/forks/giakou4/pyfeats.svg)
 
-The first step for every machine learning algorithm in a computer vision problem is to extract features from the given images. Feature extraction is a critical step in any pattern classification system. In order for the pattern recognition process to be tractable, it is necessary to convert patterns into features, which are condensed representations of the patterns, containing only salient information. Features contain the characteristics of a pattern in a comparable form making the pattern classification possible. Feature extraction can be accomplished manually or automatically. Manual feature extraction requires identifying and describing the features that are relevant for a given problem and implementing a way to extract those features. In many situations, having a good understanding of the background or domain can help make informed decisions as to which features could be useful. Over decades of research, engineers and scientists have developed feature extraction methods for images. The features inlcuded in here are: Textural Features, Morphological Features, Histogram-based Features, Multi-scale Features, and Moments.
 
 ## 1. Install through pip
 
@@ -36,6 +35,10 @@ import pyfeats
 ```
 
 ## 2. Features
+
+The first step for every machine learning algorithm in a computer vision problem is to extract features from the given images. Feature extraction is a critical step in any pattern classification system. In order for the pattern recognition process to be tractable, it is necessary to convert patterns into features, which are condensed representations of the patterns, containing only salient information. Features contain the characteristics of a pattern in a comparable form making the pattern classification possible. Feature extraction can be accomplished manually or automatically. 
+
+Manual feature extraction requires identifying and describing the features that are relevant for a given problem and implementing a way to extract those features. In many situations, having a good understanding of the background or domain can help make informed decisions as to which features could be useful. Over decades of research, engineers and scientists have developed feature extraction methods for images. The features inlcuded in here are: Textural Features, Morphological Features, Histogram-based Features, Multi-scale Features, and Moments.
 
 ### 2.1 Textural Features
 1. First Order Statistics/Statistical Features (FOS/SF)
