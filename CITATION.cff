@@ -1,10 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
 abstract: Open source software for image feature extraction
 authors:
-  - family-names: Giakoumoglou
-    given-names: Nikolaos
-date-released: "2021-11-1"
-license: MIT
-message: If you use this software, please cite it using these metadata.
+- family-names: "Giakoumoglou"
+  given-names: "Nikolaos"
+  orcid: "https://orcid.org/0000-0002-3216-5454"
+title: "PyFeats"
 repository-code: "https://github.com/giakou4/pyfeats"
-title: PyFeats
 version: 1.0.11
+doi: 10.5281/zenodo.6783286
+date-released: 2021-11-1
+url: "https://doi.org/10.5281/zenodo.6783286"
