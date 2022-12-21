@@ -2,7 +2,7 @@ import os
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
-from features import *
+from pyfeats import *
 
 #%% Pre-processing
 def padImage(im, pad=2, value=0):
