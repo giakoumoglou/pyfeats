@@ -174,7 +174,7 @@ pdf, cdf = grayscale_morphology_features(f, N)
 #### 3.2.2 Multilevel Binary Morphological Analysis
 Same as above but with grayscale image. The difference lies in the calculation of the pattern spectrum.
 ```python
-pdf_L, pdf_M, pdf_H, cdf_L, cdf_M, cdf_H = multilevel_binary_morphology_features(img, mask, N=30, thresholds=[25, 50]):
+pdf_L, pdf_M, pdf_H, cdf_L, cdf_M, cdf_H = multilevel_binary_morphology_features(f, mask, N=30, thresholds=[25, 50]):
 ```
 
 ### 3.3 Histogram Based Features
