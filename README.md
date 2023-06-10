@@ -21,6 +21,11 @@ Open source software for image feature extraction
 [comment]:[![PyPi](https://badgen.net/badge/icon/pypi?icon=pypi&label)](https://pypi.org/project/pyfeats/)
 [comment]:![forks](https://img.shields.io/github/forks/giakou4/pyfeats.svg)
 
+## Updates
+
+### 10/06/2023 New [logo]([https://link-url-here.org]([https://medium.com/@giakoumoglou4/pyfeats-open-source-software-for-image-feature-extraction-47f43bb33563](https://github.com/giakou4/features/blob/main/demo/data/PyFeats Logo v2.png))) 
+
+### 29/05/2023 Post on [medium]([https://link-url-here.org](https://medium.com/@giakoumoglou4/pyfeats-open-source-software-for-image-feature-extraction-47f43bb33563))
 
 ## 1. Install through pip
 
