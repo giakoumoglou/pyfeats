@@ -279,9 +279,7 @@ Reach out to me:
 
 ![star-history-2023613](https://github.com/giakou4/pyfeats/assets/57758089/0e93b956-9cdb-45bd-ad48-9e3c08f4b139)
 
-[![Star History Chart](https://api.star-history.com/svg?repos=giakou4/pyfeats&type=Date)](https://star-history.com/#giakou4/pyfeats&Date)
-
-## 6. Python Libraries Cited:
+## 7. Python Libraries Cited:
 * Bradski, G. (2000). The OpenCV Library. Dr. Dobb&#x27;s Journal of Software Tools.
 * Coelho, L.P. 2013. Mahotas: Open source software for scriptable computer vision. Journal of Open Research Software 1(1):e3, DOI: http://dx.doi.org/10.5334/jors.ac
 * Hunter, J. D. (2007). Matplotlib: A 2D graphics environment. Computing in Science &amp; Engineering, 9(3), 90–95.
