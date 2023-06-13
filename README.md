@@ -262,7 +262,7 @@ In Bibtex format:
 ```bibtex
 @misc{pyfeats2021giakoumoglou,  
      author = {Nikolaos Giakoumoglou},  
-     title = {PyFeats: Open source software for image feature extraction},  
+     title = {PyFeats: Open-source software for image feature extraction},  
      year = {2021},  
      publisher = {GitHub},  
      journal = {GitHub repository},  
