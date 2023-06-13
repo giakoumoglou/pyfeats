@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
-abstract: Open source software for image feature extraction
+abstract: Open-source software for image feature extraction
 authors:
 - family-names: "Giakoumoglou"
   given-names: "Nikolaos"
