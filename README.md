@@ -277,6 +277,8 @@ Reach out to me:
 
 ## 6. Stargazers
 
+![star-history-2023613](https://github.com/giakou4/pyfeats/assets/57758089/0e93b956-9cdb-45bd-ad48-9e3c08f4b139)
+
 [![Star History Chart](https://api.star-history.com/svg?repos=giakou4/pyfeats&type=Date)](https://star-history.com/#giakou4/pyfeats&Date)
 
 ## 6. Python Libraries Cited:
