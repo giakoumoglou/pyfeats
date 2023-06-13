@@ -23,6 +23,7 @@ Open source software for image feature extraction
 
 ## Updates
 
+* 13/06/2023 - Stargazers added on README.md
 * 10/06/2023 - New logo
 * 29/05/2023 - Post on [medium](https://medium.com/@giakoumoglou4/pyfeats-open-source-software-for-image-feature-extraction-47f43bb33563)
 
@@ -273,6 +274,10 @@ In Bibtex format:
 ## 5. Support
 Reach out to me:
 - [giakou4's email](mailto:ngiakoumoglou@gmail.com "ngiakoumoglou@gmail.com")
+
+## 6. Stargazers
+
+[![Star History Chart](https://api.star-history.com/svg?repos=giakou4/pyfeats&type=Date)](https://star-history.com/#giakou4/pyfeats&Date)
 
 ## 6. Python Libraries Cited:
 * Bradski, G. (2000). The OpenCV Library. Dr. Dobb&#x27;s Journal of Software Tools.
