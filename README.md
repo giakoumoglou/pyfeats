@@ -277,7 +277,7 @@ Reach out to me:
 
 ## 6. Stargazers
 
-![star-history-2023613](https://github.com/giakou4/pyfeats/assets/57758089/0e93b956-9cdb-45bd-ad48-9e3c08f4b139)
+![star-history-2023614](https://github.com/giakou4/pyfeats/assets/57758089/cb96e666-f55a-4c2d-8865-63aa505c3951)
 
 ## 7. Python Libraries Cited:
 * Bradski, G. (2000). The OpenCV Library. Dr. Dobb&#x27;s Journal of Software Tools.
