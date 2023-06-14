@@ -4,7 +4,7 @@
 
 # PyFeats
 
-Open source software for image feature extraction
+Open-source software for image feature extraction
 
 [![DOI](https://zenodo.org/badge/371957337.svg)](https://zenodo.org/badge/latestdoi/371957337)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
