@@ -23,7 +23,7 @@ Open-source software for image feature extraction
 
 ## Updates
 
-* 13/06/2023 - Stargazers added on README.md
+* 13/06/2023 - Stargazers added on README.md (using [star-history](https://star-history.com/))
 * 10/06/2023 - New logo
 * 29/05/2023 - Post on [medium](https://medium.com/@giakoumoglou4/pyfeats-open-source-software-for-image-feature-extraction-47f43bb33563)
 
