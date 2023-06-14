@@ -273,7 +273,7 @@ In Bibtex format:
 
 ## 5. Support
 Reach out to me:
-- [giakou4's email](mailto:ngiakoumoglou@gmail.com "ngiakoumoglou@gmail.com")
+- [giakou4's email](mailto:giakou4@gmail.com "giakou4@gmail.com")
 
 ## 6. Stargazers
 
