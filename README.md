@@ -275,9 +275,9 @@ In Bibtex format:
 Reach out to me:
 - [giakou4's email](mailto:giakou4@gmail.com "giakou4@gmail.com")
 
-## 6. Stargazers
+## 6. Star History
 
-![star-history-2023614](https://github.com/giakou4/pyfeats/assets/57758089/cb96e666-f55a-4c2d-8865-63aa505c3951)
+[![Star History Chart](https://api.star-history.com/svg?repos=giakoumoglou/pyfeats&type=Date)](https://star-history.com/#giakoumoglou/pyfeats&Date)
 
 ## 7. Python Libraries Cited:
 * Bradski, G. (2000). The OpenCV Library. Dr. Dobb&#x27;s Journal of Software Tools.
@@ -288,7 +288,7 @@ Reach out to me:
 * Virtanen, P., Gommers, R., Oliphant, T. E., Haberland, M., Reddy, T., Cournapeau, D., … SciPy 1.0 Contributors. (2020). SciPy 1.0: Fundamental Algorithms for Scientific Computing in Python. Nature Methods, 17, 261–272. https://doi.org/10.1038/s41592-019-0686-2
 * Van der Walt, S., Sch"onberger, Johannes L, Nunez-Iglesias, J., Boulogne, Franccois, Warner, J. D., Yager, N., … Yu, T. (2014). scikit-image: image processing in Python. PeerJ, 2, e453.
 
-## 7. Features Theory Citation:
+## 8. Features Theory Citation:
 * Acharya U, R., Chua, C. K., Ng, E. Y., Yu, W., & Chee, C. (2008, 12 01). Application of Higher Order Spectra for the Identification of Diabetes Retinopathy Stages. Journal of Medical Systems, 32, 481-488. doi:10.1007/s10916-008-9154-8
 * Acharya, U. R., Chua, K., Lim, T.-C., Tay, D., & Suri, J. (2009, 12). Automatic identification of epileptic EEG signals using nonlinear parameters. Journal of Mechanics in Medicine and Biology, 9, 539-553. doi:10.1142/S0219519409003152
 * Amadasun, M., & King, R. (1989). Textural features corresponding to textural properties. IEEE Trans. Syst. Man Cybern., 19, 1264-1274.
