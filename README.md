@@ -288,6 +288,21 @@ Reach out to me:
 * Virtanen, P., Gommers, R., Oliphant, T. E., Haberland, M., Reddy, T., Cournapeau, D., … SciPy 1.0 Contributors. (2020). SciPy 1.0: Fundamental Algorithms for Scientific Computing in Python. Nature Methods, 17, 261–272. https://doi.org/10.1038/s41592-019-0686-2
 * Van der Walt, S., Sch"onberger, Johannes L, Nunez-Iglesias, J., Boulogne, Franccois, Warner, J. D., Yager, N., … Yu, T. (2014). scikit-image: image processing in Python. PeerJ, 2, e453.
 
+## 🧪 New Example: Streamlit Web App for Shape Classification
+
+A simple Streamlit-based web app to classify basic geometric shapes using Zernike Moments and SVM.
+
+### 🔹 Features:
+- Upload shape image (JPG/PNG)
+- Predict shape: Circle, Square, Triangle
+- Confidence score and bar chart of class probabilities
+- Uses `pyfeats.zernikes_moments` for feature extraction
+
+### 🚀 How to Run
+
+1. Train the model first with:
+
+
 ## 8. Features Theory Citation:
 * Acharya U, R., Chua, C. K., Ng, E. Y., Yu, W., & Chee, C. (2008, 12 01). Application of Higher Order Spectra for the Identification of Diabetes Retinopathy Stages. Journal of Medical Systems, 32, 481-488. doi:10.1007/s10916-008-9154-8
 * Acharya, U. R., Chua, K., Lim, T.-C., Tay, D., & Suri, J. (2009, 12). Automatic identification of epileptic EEG signals using nonlinear parameters. Journal of Mechanics in Medicine and Biology, 9, 539-553. doi:10.1142/S0219519409003152
